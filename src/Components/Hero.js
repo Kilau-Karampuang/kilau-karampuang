@@ -4,10 +4,10 @@ const Hero = ({heading, subheading}) => {
       <div className="flex relative items-center justify-center h-screen bg-white overflow-hidden">
         <div className="text-center z-10">
             <h2 className="text-5xl font-shadows -mb-3">
-                {heading}
+                {subheading}
             </h2>
             <h1 className="text-6xl font-montserrat font-bold">
-                {subheading}
+                {heading}
             </h1>
         </div>
         <Image
