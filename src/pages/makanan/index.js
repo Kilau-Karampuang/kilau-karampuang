@@ -34,7 +34,7 @@ const cardData = [
   },
 ];
 
-export default function UMKM() {
+export default function Makanan() {
   const [visible, setVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
@@ -51,7 +51,7 @@ export default function UMKM() {
   return (
     <>
       <Navbar />
-      <Hero heading="UMKM Karampuang" subheading="Menelisik Bersama" />
+      <Hero heading="Makanan Karampuang" subheading="Menikmati Bersama" />
 
       <div className="max-w-screen gap-2 grid grid-cols-12 grid-rows-5 px-8">
         {cardData.map((card, index) => (
