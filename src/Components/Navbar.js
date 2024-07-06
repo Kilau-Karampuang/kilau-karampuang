@@ -14,7 +14,7 @@ const Navbar = () => {
         { href: '/wisata', label: 'Wisata' },
         { href: '/umkm', label: 'UMKM' },
         { href: '/peta', label: 'Peta' },
-        { href: '/kkn', label: 'KKN' },
+        { href: '/makanan', label: 'Makanan'}
     ];
 
     return (
