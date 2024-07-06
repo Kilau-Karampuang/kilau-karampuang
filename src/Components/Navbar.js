@@ -14,7 +14,8 @@ const Navbar = () => {
         { href: '/wisata', label: 'Wisata' },
         { href: '/umkm', label: 'UMKM' },
         { href: '/peta', label: 'Peta' },
-        { href: '/makanan', label: 'Makanan'}
+        { href: '/makanan', label: 'Makanan'},
+        { href: '/sttunting-calculator', label: 'Stunting Calculator'}
     ];
 
     return (
