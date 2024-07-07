@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
+import Map from "@/Components/Map";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function Home() {
         className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
       >
         {/* Other Components Here */}
+        <Map />
       </main>
     </>
   );
