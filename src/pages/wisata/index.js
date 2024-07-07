@@ -1,23 +1,24 @@
 import Heading from "@/Components/Heading";
 import Hero from "@/Components/Hero";
 import Navbar from "@/Components/Navbar";
+import YouTubeEmbed from "@/Components/YoutubeEmbed";
 import { Card, CardFooter, Image, Button, CardHeader } from "@nextui-org/react";
 
 const cardData = [
   {
-    imageSrc: "https://nextui.org/images/hero-card.jpeg",
+    imageSrc: "/Diving.png",
     altText: "Woman listening to music",
     heading: "Diving and Snorkeling",
     title: "Aktivitas"
   },
   {
-    imageSrc: "https://nextui.org/images/hero-card.jpeg",
+    imageSrc: "/GoaLidah.png",
     altText: "Woman listening to music",
     heading: "Goa Lidah",
     title: "Wisata"
   },
   {
-    imageSrc: "https://nextui.org/images/hero-card.jpeg",
+    imageSrc: "/SumurKapal.png",
     altText: "Woman listening to music",
     heading: "Sumur Kapal",
     title: "Wisata"
@@ -36,7 +37,7 @@ export default function Wisata(){
                 heading={<>Destinasi <b>Unggulan</b></>}
                 subheading="Jelajahi berbagai tempat dan aktivitas tak terlupakan"
             />    
-            <div className="max-w-screen mt-12 lg:mx-40 gap-8 grid grid-cols-9 grid-rows-5 px-8">
+            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-8 grid grid-cols-9 px-8">
                 {cardData.map((card, index) => (
                     <Card
                         key={index}
@@ -67,6 +68,9 @@ export default function Wisata(){
                         </CardFooter>
                     </Card>
                 ))}
+            </div>
+            <div className="flex justify-center">
+                <YouTubeEmbed videoId="hRYZ_fCX_pk" />
             </div>
         </>
     )
