@@ -33,10 +33,26 @@ export default function Wisata(){
                 heading="Wisata Karampuang"
                 subheading="Jelajahi Pesona"
                 image="/Vector_S.png" />
+            <p className="font-montserrat text-lg p-4 max-w-3xl mt-4 mb-20 text-center mx-auto">
+                <b>Selamat datang di Pulau Karampuang,</b><br /> surga tersembunyi di Sulawesi yang menawarkan berbagai destinasi wisata yang menarik dengan pesona alam dan keindahan bawah laut yang memukau. 
+                Nikmati petualangan diving dan snorkeling di perairan jernih yang penuh dengan terumbu karang dan kehidupan laut yang berwarna-warni. 
+                Jelajahi Goa Lidah, formasi alami yang mempesona. 
+                Temukan Sumur Kapal, sebuah fenomena alam unik di mana air laut menyusup ke daratan, menciptakan sumur alami yang menakjubkan. 
+                Jangan lupa mengunjungi Sumur Jodoh, yang dipercaya membawa keberuntungan bagi para pencari cinta, 
+                dan Sumur 3 Rasa, di mana Anda bisa merasakan keajaiban tiga rasa air yang berbeda dalam satu tempat. 
+                Karampuang menanti Anda dengan segala pesonanya!
+            </p> 
+            <Heading 
+                heading={<>Pesona <b>Wisata</b></>}
+                subheading="Saksikan keindahan alam tersembunyi di Pulau Karampuang"
+            />
+            <div className="flex justify-center mt-10">
+                <YouTubeEmbed videoId="hRYZ_fCX_pk" />
+            </div>
             <Heading
                 heading={<>Destinasi <b>Unggulan</b></>}
                 subheading="Jelajahi berbagai tempat dan aktivitas tak terlupakan"
-            />    
+            />   
             <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
                 {cardData.map((card, index) => (
                     <Card
@@ -68,9 +84,6 @@ export default function Wisata(){
                         </CardFooter>
                     </Card>
                 ))}
-            </div>
-            <div className="flex justify-center">
-                <YouTubeEmbed videoId="hRYZ_fCX_pk" />
             </div>
         </>
     )
