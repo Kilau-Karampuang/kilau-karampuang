@@ -37,12 +37,12 @@ export default function Wisata(){
                 heading={<>Destinasi <b>Unggulan</b></>}
                 subheading="Jelajahi berbagai tempat dan aktivitas tak terlupakan"
             />    
-            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-8 grid grid-cols-9 px-8">
+            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
                 {cardData.map((card, index) => (
                     <Card
                         key={index}
                         isFooterBlurred
-                        className="w-full h-80 col-span-12 sm:col-span-3"
+                        className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
                     >
                         <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
                         <p className="text-white text-center text-2xl font-bold font-montserrat">
