@@ -7,7 +7,7 @@ const YouTubeEmbed = ({ videoId }) => {
             <div className="relative" style={{ width: '100%', paddingTop: '56.25%' }}>
                 <iframe
                     className="absolute top-0 left-0 w-full h-full"
-                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&modestbranding=1&rel=0`}
+                    src={`https://www.youtube.com/embed/${videoId}?controls=0&modestbranding=1&rel=0`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     loading='lazy'
