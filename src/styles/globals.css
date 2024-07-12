@@ -31,3 +31,16 @@ body {
     text-wrap: balance;
   }
 }
+.wisata {
+  @apply font-montserrat;
+}
+.wisata h1 {
+  @apply text-lg;
+  @apply md:text-2xl; 
+  @apply font-semibold;
+  @apply my-3
+}
+
+.wisata p {
+  @apply mb-4
+}
