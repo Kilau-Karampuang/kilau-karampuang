@@ -1,91 +1,157 @@
 import Navbar from "@/Components/Navbar";
 import { useState } from "react";
 
-const StuntingCalculator = () => {
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [age, setAge] = useState("");
-  const [result, setResult] = useState(null);
+function StuntingCalculator() {
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [age, setAge] = useState('');
+  const [hemoglobin, setHemoglobin] = useState('');
+  const [maternalDisease, setMaternalDisease] = useState(false);
+  const [smoking, setSmoking] = useState(false);
+  const [economicStatus, setEconomicStatus] = useState('');
+  const [risk, setRisk] = useState(null);
+  const [error, setError] = useState('');
 
-  const calculateStunting = (e) => {
-    e.preventDefault();
-
-    /* TODO: FIX CALCULATION ALGORITHM */
-    const heightInCm = parseFloat(height);
-    const weightInKg = parseFloat(weight);
-    const ageInYears = parseFloat(age);
-
-    if (isNaN(heightInCm) || isNaN(weightInKg) || isNaN(ageInYears)) {
-      setResult("Please enter valid numbers for height, weight, and age.");
+  const calculateRisk = () => {
+    if (!height || !weight || !age || !hemoglobin || !economicStatus) {
+      setError('Please fill in all fields');
+      setRisk(null);
       return;
     }
+    
+    setError('');
 
-    /* TODO: FIX SCORE THRESHOLD */
-    const stuntingThreshold = 100 - (ageInYears * 2);
+    let riskScore = 0;
+    let totalWeight = 0;
 
-    if (heightInCm < stuntingThreshold) {
-      setResult("The child is stunted.");
+    if (height < 145) {
+      riskScore += 20; // 20% weight for height
+      totalWeight += 20;
+    }
+    if (weight / ((height / 100) * (height / 100)) < 18.5) {
+      riskScore += 25; // 25% weight for BMI
+      totalWeight += 25;
+    }
+    if (age < 20 || age > 35) {
+      riskScore += 15; // 15% weight for age
+      totalWeight += 15;
+    }
+    if (hemoglobin < 11) {
+      riskScore += 20; // 20% weight for hemoglobin
+      totalWeight += 20;
+    }
+    if (maternalDisease) {
+      riskScore += 20; // 20% weight for maternal disease
+      totalWeight += 20;
+    }
+    if (smoking) {
+      riskScore += 10; // 10% weight for smoking
+      totalWeight += 10;
+    }
+    if (economicStatus === 'low') {
+      riskScore += 30; // 30% weight for low economic status
+      totalWeight += 30;
+    }
+
+    let normalizedRiskScore = (riskScore / totalWeight) * 100;
+
+    if (normalizedRiskScore >= 50) {
+      setRisk(`High (${normalizedRiskScore.toFixed(2)}%)`);
+    } else if (normalizedRiskScore >= 30) {
+      setRisk(`Medium (${normalizedRiskScore.toFixed(2)}%)`);
     } else {
-      setResult("The child is not stunted.");
+      setRisk(`Low (${normalizedRiskScore.toFixed(2)}%)`);
     }
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="max-w-screen-lg mx-auto px-8 py-16">
-        <h1 className="text-2xl font-bold mb-8">Stunting Calculator</h1>
-        <form onSubmit={calculateStunting} className="space-y-4">
+    <div>
+      {/* <Navbar /> */}
+      <div className="container" style={{ padding: "20px" }}>
+        <h1>Stunting Risk Calculator</h1>
+        <form 
+          onSubmit={(e) => { e.preventDefault(); calculateRisk(); }} 
+          style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+        >
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Height (cm)
-            </label>
-            <input
-              type="text"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            <label>Height (cm):</label>
+            <input 
+              type="number" 
+              value={height} 
+              onChange={(e) => setHeight(e.target.value)} 
+              style={{ marginLeft: "10px" }} 
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Weight (kg)
-            </label>
-            <input
-              type="text"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            <label>Weight (kg):</label>
+            <input 
+              type="number" 
+              value={weight} 
+              onChange={(e) => setWeight(e.target.value)} 
+              style={{ marginLeft: "10px" }} 
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Age (years)
-            </label>
-            <input
-              type="text"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            <label>Age (years):</label>
+            <input 
+              type="number" 
+              value={age} 
+              onChange={(e) => setAge(e.target.value)} 
+              style={{ marginLeft: "10px" }} 
             />
           </div>
           <div>
-            <button
-              type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            <label>Hemoglobin (g/dL):</label>
+            <input 
+              type="number" 
+              value={hemoglobin} 
+              onChange={(e) => setHemoglobin(e.target.value)} 
+              style={{ marginLeft: "10px" }} 
+            />
+          </div>
+          <div>
+            <label>Maternal Disease (Yes/No):</label>
+            <input 
+              type="checkbox" 
+              checked={maternalDisease} 
+              onChange={(e) => setMaternalDisease(e.target.checked)} 
+              style={{ marginLeft: "10px" }} 
+            />
+          </div>
+          <div>
+            <label>Smoking (Yes/No):</label>
+            <input 
+              type="checkbox" 
+              checked={smoking} 
+              onChange={(e) => setSmoking(e.target.checked)} 
+              style={{ marginLeft: "10px" }} 
+            />
+          </div>
+          <div>
+            <label>Economic Status (Low/Medium/High):</label>
+            <select 
+              value={economicStatus} 
+              onChange={(e) => setEconomicStatus(e.target.value)} 
+              style={{ marginLeft: "10px" }}
             >
-              Calculate
-            </button>
+              <option value="">Select</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
           </div>
+          <button 
+            type="submit" 
+            style={{ padding: "10px", backgroundColor: "#4CAF50", color: "white", border: "none", cursor: "pointer" }}
+          >
+            Calculate Risk
+          </button>
         </form>
-        {result && (
-          <div className="mt-4 p-4 bg-gray-100 rounded-md">
-            <p>{result}</p>
-          </div>
-        )}
+        {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
+        {risk && <div className="result" style={{ marginTop: "10px" }}>Stunting Risk: {risk}</div>}
       </div>
-    </>
+    </div>
   );
-};
+}
 
 export default StuntingCalculator;
