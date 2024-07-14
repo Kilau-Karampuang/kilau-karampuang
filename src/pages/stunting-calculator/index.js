@@ -1,4 +1,5 @@
 import Navbar from "@/Components/Navbar";
+import Hero from "@/Components/Hero";
 import { useState } from "react";
 
 function StuntingCalculator() {
@@ -66,75 +67,91 @@ function StuntingCalculator() {
 
   return (
     <div>
-      {/* <Navbar /> */}
-      <div className="container" style={{ padding: "20px" }}>
-        <h1>Stunting Risk Calculator</h1>
+      <Navbar />
+      <Hero heading="Stunting Anak" subheading="Kalkulator Deteksi" />
+      <div className=" mx-auto p-4">
         <form 
           onSubmit={(e) => { e.preventDefault(); calculateRisk(); }} 
-          style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          className="flex flex-col gap-4"
         >
-          <div>
-            <label>Height (cm):</label>
+          <div className="flex flex-col">
+            <label className="mb-2">Tinggi Badan Ibu (cm):</label>
             <input 
               type="number" 
               value={height} 
               onChange={(e) => setHeight(e.target.value)} 
-              style={{ marginLeft: "10px" }} 
+              className="p-2 border border-gray-300 rounded"
             />
           </div>
-          <div>
-            <label>Weight (kg):</label>
+          <div className="flex flex-col">
+            <label className="mb-2">Berat Badan Ibu (kg):</label>
             <input 
               type="number" 
               value={weight} 
               onChange={(e) => setWeight(e.target.value)} 
-              style={{ marginLeft: "10px" }} 
+              className="p-2 border border-gray-300 rounded"
             />
           </div>
-          <div>
-            <label>Age (years):</label>
+          <div className="flex flex-col">
+            <label className="mb-2">Usia Ibu:</label>
             <input 
               type="number" 
               value={age} 
               onChange={(e) => setAge(e.target.value)} 
-              style={{ marginLeft: "10px" }} 
+              className="p-2 border border-gray-300 rounded"
             />
           </div>
-          <div>
-            <label>Hemoglobin (g/dL):</label>
+          <div className="flex flex-col">
+            <label className="mb-2">Hemoglobin Ibu (g/dL):</label>
             <input 
               type="number" 
               value={hemoglobin} 
               onChange={(e) => setHemoglobin(e.target.value)} 
-              style={{ marginLeft: "10px" }} 
+              className="p-2 border border-gray-300 rounded"
             />
           </div>
-          <div>
-            <label>Maternal Disease (Yes/No):</label>
-            <input 
-              type="checkbox" 
-              checked={maternalDisease} 
-              onChange={(e) => setMaternalDisease(e.target.checked)} 
-              style={{ marginLeft: "10px" }} 
-            />
+          <div className="flex flex-col">
+            <label className="mb-2">Penyakit Maternal?</label>
+            <div className="flex items-center">
+              <input 
+                type="checkbox" 
+                checked={maternalDisease} 
+                onChange={(e) => setMaternalDisease(e.target.checked)} 
+                className="mr-2"
+              /> Iya
+              <input 
+                type="checkbox" 
+                checked={!maternalDisease} 
+                onChange={(e) => setMaternalDisease(!e.target.checked)} 
+                className="ml-4 mr-2"
+              /> Tidak
+            </div>
           </div>
-          <div>
-            <label>Smoking (Yes/No):</label>
-            <input 
-              type="checkbox" 
-              checked={smoking} 
-              onChange={(e) => setSmoking(e.target.checked)} 
-              style={{ marginLeft: "10px" }} 
-            />
+          <div className="flex flex-col">
+            <label className="mb-2">Terpapar Asap Rokok?</label>
+            <div className="flex items-center">
+              <input 
+                type="checkbox" 
+                checked={smoking} 
+                onChange={(e) => setSmoking(e.target.checked)} 
+                className="mr-2"
+              /> Iya
+              <input 
+                type="checkbox" 
+                checked={!smoking} 
+                onChange={(e) => setSmoking(!e.target.checked)} 
+                className="ml-4 mr-2"
+              /> Tidak
+            </div>
           </div>
-          <div>
-            <label>Economic Status (Low/Medium/High):</label>
+          <div className="flex flex-col">
+            <label className="mb-2">Status Ekonomi:</label>
             <select 
               value={economicStatus} 
               onChange={(e) => setEconomicStatus(e.target.value)} 
-              style={{ marginLeft: "10px" }}
+              className="p-2 border border-gray-300 rounded"
             >
-              <option value="">Select</option>
+              <option value="">Pilih</option>
               <option value="low">Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
@@ -142,13 +159,13 @@ function StuntingCalculator() {
           </div>
           <button 
             type="submit" 
-            style={{ padding: "10px", backgroundColor: "#4CAF50", color: "white", border: "none", cursor: "pointer" }}
+            className="p-2 bg-yellow-500 text-black rounded"
           >
-            Calculate Risk
+            Hitung!
           </button>
         </form>
-        {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
-        {risk && <div className="result" style={{ marginTop: "10px" }}>Stunting Risk: {risk}</div>}
+        {error && <div className="text-red-500 mt-4">{error}</div>}
+        {risk && <div className="result mt-4">Risiko Stunting: {risk}</div>}
       </div>
     </div>
   );
