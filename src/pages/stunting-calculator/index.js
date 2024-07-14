@@ -1,6 +1,9 @@
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Modal from "react-modal";
+
+Modal.setAppElement('#__next');
 
 function StuntingCalculator() {
   const [height, setHeight] = useState('');
@@ -12,14 +15,18 @@ function StuntingCalculator() {
   const [economicStatus, setEconomicStatus] = useState('');
   const [risk, setRisk] = useState(null);
   const [error, setError] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [initialModal, setInitialModal] = useState(true);
 
   const calculateRisk = () => {
     if (!height || !weight || !age || !hemoglobin || !economicStatus) {
       setError('Please fill in all fields');
       setRisk(null);
+      setInitialModal(false);
+      setModalIsOpen(true);
       return;
     }
-    
+
     setError('');
 
     let riskScore = 0;
@@ -55,15 +62,15 @@ function StuntingCalculator() {
     }
 
     let normalizedRiskScore = (riskScore / totalWeight) * 100;
+    setRisk(`${normalizedRiskScore.toFixed(2)}%`)
 
-    if (normalizedRiskScore >= 50) {
-      setRisk(`High (${normalizedRiskScore.toFixed(2)}%)`);
-    } else if (normalizedRiskScore >= 30) {
-      setRisk(`Medium (${normalizedRiskScore.toFixed(2)}%)`);
-    } else {
-      setRisk(`Low (${normalizedRiskScore.toFixed(2)}%)`);
-    }
+    setModalIsOpen(true);
+    setInitialModal(false);
   };
+
+  useEffect(() => {
+    setModalIsOpen(true);
+  }, []);
 
   return (
     <div>
@@ -166,9 +173,50 @@ function StuntingCalculator() {
             </button>
           </div>
         </form>
-        {error && <div className="text-red-500 mt-4">{error}</div>}
-        {risk && <div className="result mt-4">Risiko Stunting: {risk}</div>}
       </div>
+      
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel={initialModal ? "Informasi Kalkulasi Stunting" : error ? "Error" : "Hasil Kalkulasi Risiko Stunting"}
+        className="max-w-md mx-auto mt-4 bg-white rounded-lg shadow-lg p-4"
+        overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-75 z-50"
+      >
+        {initialModal ? (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Informasi Kalkulasi Stunting</h2>
+            <p>Kalkulator ini menggunakan beberapa parameter untuk menghitung risiko stunting pada anak berdasarkan tinggi badan ibu, berat badan ibu, usia ibu, kadar hemoglobin ibu, adanya penyakit maternal, paparan asap rokok, dan status ekonomi.</p>
+            <button 
+              onClick={() => { setModalIsOpen(false); setInitialModal(false); }} 
+              className="mt-4 p-2 bg-yellow-500 text-black rounded"
+            >
+              Tutup
+            </button>
+          </div>
+        ) : error ? (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Error</h2>
+            <p>{error}</p>
+            <button 
+              onClick={() => setModalIsOpen(false)} 
+              className="mt-4 p-2 bg-yellow-500 text-black rounded"
+            >
+              Tutup
+            </button>
+          </div>
+        ) : (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Hasil Kalkulasi Risiko Stunting</h2>
+            <p>Risiko Stunting: {risk}</p>
+            <button 
+              onClick={() => setModalIsOpen(false)} 
+              className="mt-4 p-2 bg-yellow-500 text-black rounded"
+            >
+              Tutup
+            </button>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
