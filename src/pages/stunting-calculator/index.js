@@ -20,7 +20,7 @@ function StuntingCalculator() {
 
   const calculateRisk = () => {
     if (!height || !weight || !age || !hemoglobin || !economicStatus) {
-      setError('Please fill in all fields');
+      setError('Mohon isi semua kolom!');
       setRisk(null);
       setInitialModal(false);
       setModalIsOpen(true);
@@ -82,44 +82,44 @@ function StuntingCalculator() {
           className="flex flex-col gap-4"
         >
           <div className="flex flex-row justify-around">
-            <label className="w-1/2 mb-2 text-center">Tinggi Badan Ibu (cm):</label>
+            <label className="w-1/5 mb-2 text-center">Tinggi Badan Ibu (cm):</label>
             <input 
               type="number" 
               value={height} 
               onChange={(e) => setHeight(e.target.value)} 
-              className="w-1/2 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
           <div className="flex flex-row justify-around">
-            <label className="w-1/2 mb-2 text-center">Berat Badan Ibu (kg):</label>
+            <label className="w-1/5 mb-2 text-center">Berat Badan Ibu (kg):</label>
             <input 
               type="number" 
               value={weight} 
               onChange={(e) => setWeight(e.target.value)} 
-              className="w-1/2 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
           <div className="flex flex-row justify-around">
-            <label className="w-1/2 mb-2 text-center">Usia Ibu:</label>
+            <label className="w-1/5 mb-2 text-center">Usia Ibu:</label>
             <input 
               type="number" 
               value={age} 
               onChange={(e) => setAge(e.target.value)} 
-              className="w-1/2 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
           <div className="flex flex-row justify-around">
-            <label className="w-1/2 mb-2 text-center">Hemoglobin Ibu (g/dL):</label>
+            <label className="w-1/5 mb-2 text-center">Hemoglobin Ibu (g/dL):</label>
             <input 
               type="number" 
               value={hemoglobin} 
               onChange={(e) => setHemoglobin(e.target.value)} 
-              className="w-1/2 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
           <div className="flex flex-row justify-around">
-            <label className="w-1/2 mb-2 text-center">Penyakit Maternal?</label>
-            <div className="flex w-1/2">
+            <label className="w-1/5 mb-2 text-center">Penyakit Maternal?</label>
+            <div className="flex w-4/5">
               <input 
                 type="checkbox" 
                 checked={maternalDisease} 
@@ -135,8 +135,8 @@ function StuntingCalculator() {
             </div>
           </div>
           <div className="flex flex-row justify-around">
-            <label className="w-1/2 mb-2 text-center">Terpapar Asap Rokok?</label>
-            <div className="flex w-1/2">
+            <label className="w-1/5 mb-2 text-center">Terpapar Asap Rokok?</label>
+            <div className="flex w-4/5">
               <input 
                 type="checkbox" 
                 checked={smoking} 
@@ -152,11 +152,11 @@ function StuntingCalculator() {
             </div>
           </div>
           <div className="flex flex-row justify-around">
-            <label className="w-1/2 mb-2 text-center">Status Ekonomi:</label>
+            <label className="w-1/5 mb-2 text-center">Status Ekonomi:</label>
             <select 
               value={economicStatus} 
               onChange={(e) => setEconomicStatus(e.target.value)} 
-              className="w-1/2 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             >
               <option value="">Pilih</option>
               <option value="low">Rendah</option>
@@ -183,7 +183,7 @@ function StuntingCalculator() {
         overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-75 z-50"
       >
         {initialModal ? (
-          <div>
+          <div className="flex flex-col justify-center">
             <h2 className="text-xl font-bold mb-4">Informasi Kalkulasi Stunting</h2>
             <p>Kalkulator ini menggunakan beberapa parameter untuk menghitung risiko stunting pada anak berdasarkan tinggi badan ibu, berat badan ibu, usia ibu, kadar hemoglobin ibu, adanya penyakit maternal, paparan asap rokok, dan status ekonomi.</p>
             <button 
@@ -194,7 +194,7 @@ function StuntingCalculator() {
             </button>
           </div>
         ) : error ? (
-          <div>
+          <div className="flex flex-col justify-center">
             <h2 className="text-xl font-bold mb-4">Error</h2>
             <p>{error}</p>
             <button 
