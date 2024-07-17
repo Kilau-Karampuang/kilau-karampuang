@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const {nextui} = require("@nextui-org/react");
+const {nextui, colors} = require("@nextui-org/react");
+const { color } = require('framer-motion');
 
 module.exports = {
   content: [
@@ -19,6 +20,14 @@ module.exports = {
         montserrat: ['Montserrat', 'sans-serif'],
         shadows: ['Shadows Into Light', 'cursive'],
       },
+      colors: {
+        red: {
+          dark: '#8B1B0E'
+        },
+        gray: {
+          dark: '#D9D9D9'
+        }
+      }
     },
   },
   darkMode: "class",
