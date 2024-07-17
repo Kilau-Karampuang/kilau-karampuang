@@ -51,7 +51,7 @@ export default function Makanan() {
   return (
     <>
       <Navbar />
-      <Hero heading="Makanan Karampuang" subheading="Menikmati Bersama" />
+      <Hero heading="Tarian Karampuang" subheading="Eksplorasi Bersama" />
 
       <div className="max-w-screen gap-2 grid grid-cols-12 grid-rows-5 px-8">
         {cardData.map((card, index) => (
