@@ -58,7 +58,7 @@ export default function Makanan() {
           <Card
             key={index}
             isFooterBlurred
-            className="w-full h-[300px] col-span-12 sm:col-span-3"
+            className="w-full h-[300px] col-span-12 sm:col-span-3 hover:scale-105"
           >
             <CardHeader className="absolute z-10 top-1 flex-col items-start">
               <p className="text-tiny text-white/60 uppercase font-bold">

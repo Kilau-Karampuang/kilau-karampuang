@@ -14,7 +14,7 @@ const Navbar = () => {
     const links = [
         { href: '/profile', label: 'Profile' },
         { href: '/wisata', label: 'Wisata' },
-        { href: '/umkm', label: 'UMKM' },
+        { href: '/artikel', label: 'Artikel' },
         { href: '/peta', label: 'Peta' },
         { href: '/tarian', label: 'Tarian'},
     ];
