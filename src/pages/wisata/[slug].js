@@ -39,7 +39,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postFilePath = path.join(process.cwd(), 'src/content', `${params.slug}.md`);
+  const postFilePath = path.join(process.cwd(), 'content/wisata', `${params.slug}.md`);
   const fileContent = fs.readFileSync(postFilePath, 'utf8');
   const { content, data } = matter(fileContent);
 

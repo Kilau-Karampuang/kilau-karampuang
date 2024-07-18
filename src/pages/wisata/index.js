@@ -38,8 +38,8 @@ export default function Wisata(){
                 Nikmati petualangan diving dan snorkeling di perairan jernih yang penuh dengan terumbu karang dan kehidupan laut yang berwarna-warni. 
                 Jelajahi Goa Lidah, formasi alami yang mempesona. 
                 Temukan Sumur Kapal, sebuah fenomena alam unik di mana air laut menyusup ke daratan, menciptakan sumur alami yang menakjubkan. 
-                Jangan lupa mengunjungi Sumur Jodoh, yang dipercaya membawa keberuntungan bagi para pencari cinta, 
-                dan Sumur 3 Rasa, di mana Anda bisa merasakan keajaiban tiga rasa air yang berbeda dalam satu tempat. 
+                Jangan lupa mengunjungi Sumur Jodoh 3 Rasa, di mana Anda bisa merasakan keajaiban tiga rasa air yang berbeda dalam satu tempat 
+                yang dipercaya membawa keberuntungan bagi para pencari cinta,
                 Karampuang menanti Anda dengan segala pesonanya!
             </p> 
             <Heading 
