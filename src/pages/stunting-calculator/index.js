@@ -62,7 +62,7 @@ function StuntingCalculator() {
     }
 
     let normalizedRiskScore = (riskScore / totalWeight) * 100;
-    setRisk(`${normalizedRiskScore.toFixed(2)}%`)
+    setRisk(`${normalizedRiskScore.toFixed(2)}%`);
 
     setModalIsOpen(true);
     setInitialModal(false);
@@ -76,50 +76,50 @@ function StuntingCalculator() {
     <div>
       <Navbar />
       <Hero heading="Stunting Anak" subheading="Kalkulator Deteksi" />
-      <div className="mx-auto p-4">
+      <div className="max-w-2xl mx-auto p-4">
         <form 
           onSubmit={(e) => { e.preventDefault(); calculateRisk(); }} 
           className="flex flex-col gap-4"
         >
-          <div className="flex flex-row justify-around">
-            <label className="w-1/5 mb-2 text-center">Tinggi Badan Ibu (cm):</label>
+          <div className="flex flex-col sm:flex-row justify-around">
+            <label className="w-full sm:w-1/5 mb-2 sm:mb-0 text-center sm:text-left">Tinggi Badan Ibu (cm):</label>
             <input 
               type="number" 
               value={height} 
               onChange={(e) => setHeight(e.target.value)} 
-              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-full sm:w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
-          <div className="flex flex-row justify-around">
-            <label className="w-1/5 mb-2 text-center">Berat Badan Ibu (kg):</label>
+          <div className="flex flex-col sm:flex-row justify-around">
+            <label className="w-full sm:w-1/5 mb-2 sm:mb-0 text-center sm:text-left">Berat Badan Ibu (kg):</label>
             <input 
               type="number" 
               value={weight} 
               onChange={(e) => setWeight(e.target.value)} 
-              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-full sm:w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
-          <div className="flex flex-row justify-around">
-            <label className="w-1/5 mb-2 text-center">Usia Ibu:</label>
+          <div className="flex flex-col sm:flex-row justify-around">
+            <label className="w-full sm:w-1/5 mb-2 sm:mb-0 text-center sm:text-left">Usia Ibu:</label>
             <input 
               type="number" 
               value={age} 
               onChange={(e) => setAge(e.target.value)} 
-              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-full sm:w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
-          <div className="flex flex-row justify-around">
-            <label className="w-1/5 mb-2 text-center">Hemoglobin Ibu (g/dL):</label>
+          <div className="flex flex-col sm:flex-row justify-around">
+            <label className="w-full sm:w-1/5 mb-2 sm:mb-0 text-center sm:text-left">Hemoglobin Ibu (g/dL):</label>
             <input 
               type="number" 
               value={hemoglobin} 
               onChange={(e) => setHemoglobin(e.target.value)} 
-              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-full sm:w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
-          <div className="flex flex-row justify-around">
-            <label className="w-1/5 mb-2 text-center">Penyakit Maternal?</label>
-            <div className="flex w-4/5">
+          <div className="flex flex-col sm:flex-row justify-around">
+            <label className="w-full sm:w-1/5 mb-2 sm:mb-0 text-center sm:text-left">Penyakit Maternal?</label>
+            <div className="flex w-full sm:w-4/5">
               <input 
                 type="checkbox" 
                 checked={maternalDisease} 
@@ -134,9 +134,9 @@ function StuntingCalculator() {
               /> Tidak
             </div>
           </div>
-          <div className="flex flex-row justify-around">
-            <label className="w-1/5 mb-2 text-center">Terpapar Asap Rokok?</label>
-            <div className="flex w-4/5">
+          <div className="flex flex-col sm:flex-row justify-around">
+            <label className="w-full sm:w-1/5 mb-2 sm:mb-0 text-center sm:text-left">Terpapar Asap Rokok?</label>
+            <div className="flex w-full sm:w-4/5">
               <input 
                 type="checkbox" 
                 checked={smoking} 
@@ -151,12 +151,12 @@ function StuntingCalculator() {
               /> Tidak
             </div>
           </div>
-          <div className="flex flex-row justify-around">
-            <label className="w-1/5 mb-2 text-center">Status Ekonomi:</label>
+          <div className="flex flex-col sm:flex-row justify-around">
+            <label className="w-full sm:w-1/5 mb-2 sm:mb-0 text-center sm:text-left">Status Ekonomi:</label>
             <select 
               value={economicStatus} 
               onChange={(e) => setEconomicStatus(e.target.value)} 
-              className="w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
+              className="w-full sm:w-4/5 p-2 border border-gray-300 bg-gray-100 rounded"
             >
               <option value="">Pilih</option>
               <option value="low">Rendah</option>
@@ -167,7 +167,7 @@ function StuntingCalculator() {
           <div className="flex justify-center">
             <button 
               type="submit" 
-              className="mt-4 font-bold w-1/5 p-2 bg-yellow-500 text-black rounded"
+              className="mt-4 font-bold w-full sm:w-1/5 p-2 bg-yellow-500 text-black rounded"
             >
               Hitung!
             </button>

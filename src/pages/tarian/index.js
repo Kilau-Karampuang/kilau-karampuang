@@ -51,14 +51,14 @@ export default function Makanan() {
   return (
     <>
       <Navbar />
-      <Hero heading="Makanan Karampuang" subheading="Menikmati Bersama" />
+      <Hero heading="Tarian Karampuang" subheading="Eksplorasi Bersama" />
 
       <div className="max-w-screen gap-2 grid grid-cols-12 grid-rows-5 px-8">
         {cardData.map((card, index) => (
           <Card
             key={index}
             isFooterBlurred
-            className="w-full h-[300px] col-span-12 sm:col-span-3"
+            className="w-full h-[300px] col-span-12 sm:col-span-3 hover:scale-105"
           >
             <CardHeader className="absolute z-10 top-1 flex-col items-start">
               <p className="text-tiny text-white/60 uppercase font-bold">
