@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 const Hero = ({heading, subheading, image="/Star3.png"}) => {
     return (
       <div className="flex relative items-center justify-center h-screen bg-white overflow-hidden">

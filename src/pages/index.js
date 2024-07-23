@@ -32,7 +32,7 @@ export default function Home() {
       <YouTubeEmbed videoId="hRYZ_fCX_pk" />
 
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+        className={`flex min-h-screen flex-col items-center justify-between px-24 ${inter.className}`}
       >
         {/* Other Components Here */}
         <Map />
