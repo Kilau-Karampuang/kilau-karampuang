@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Navbar from '@/Components/Navbar';
-import Hero from '@/Components/Hero';
+import React, { useState } from "react";
+import Navbar from "@/Components/Navbar";
+import Hero from "@/Components/Hero";
 
 const data = [
   {
@@ -62,7 +62,7 @@ const data = [
     title: "Lorem Ipsum12",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisi lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit."
-  },
+  }
 ];
 
 const Article = ({ title, content }) => {
@@ -97,28 +97,38 @@ export default function Berita() {
       <Navbar />
       <Hero heading="Berita Karampuang" subheading="Terus Pantau" />
       <div className="container mx-auto py-8 px-12">
-        {currentArticles.map((article, index) => (
-          <Article key={index} title={article.title} content={article.content} />
-        ))}
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-            className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
-          >
-            Previous
-          </button>
-          <span className="text-sm">
-            Halaman {currentPage} dari {totalPages}
-          </span>
-          <button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
-          >
-            Next
-          </button>
-        </div>
+        {data.length === 0 ? (
+          <p className="text-center text-gray-500 px-24 py-24">Tidak ada berita</p>
+        ) : (
+          <>
+            {currentArticles.map((article, index) => (
+              <Article
+                key={index}
+                title={article.title}
+                content={article.content}
+              />
+            ))}
+            <div className="flex justify-between mt-8">
+              <button
+                onClick={handlePrevPage}
+                disabled={currentPage === 1}
+                className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
+              >
+                Sebelumnya
+              </button>
+              <span className="text-sm">
+                Halaman {currentPage} dari {totalPages}
+              </span>
+              <button
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+                className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
+              >
+                Selanjutnya
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
