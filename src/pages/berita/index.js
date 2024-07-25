@@ -117,7 +117,7 @@ export default function Berita() {
                 Sebelumnya
               </button>
               <span className="text-sm">
-                Halaman {currentPage} dari {totalPages}
+                {currentPage} / {totalPages}
               </span>
               <button
                 onClick={handleNextPage}
