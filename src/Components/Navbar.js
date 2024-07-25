@@ -40,7 +40,7 @@ const Navbar = () => {
                 href="/berita"
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
               >
-                Berita
+                Berita Desa
               </Link>
               <Link
                 href="/stunting-calculator"
