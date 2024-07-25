@@ -10,6 +10,7 @@ export default function AdminBerita() {
   const handleSubmit = () => {
     if (password == process.env.NEXT_PUBLIC_PASSWORD) {
       alert("Password benar");
+      localStorage.setItem("isAdmin", true);
     } else {
       alert("Password salah");
     };
