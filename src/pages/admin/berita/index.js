@@ -6,6 +6,7 @@ import axios from "axios";
 const Article = ({
   title,
   content,
+  date,
   onEdit,
   onDelete,
   onSave,
@@ -16,6 +17,17 @@ const Article = ({
   editContent,
   setEditContent
 }) => {
+  const readableDate = new Date(date).toLocaleString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZoneName: "short"
+  });
+
   return (
     <div className="border-t border-gray-300 py-4">
       {isEditing ? (
@@ -36,6 +48,7 @@ const Article = ({
       ) : (
         <p className="mt-2 text-sm text-gray-700">{content}</p>
       )}
+      <p className="mt-2 text-xs text-gray-600">{readableDate}</p>
       <div className="mt-2 text-xs text-gray-600 flex items-center">
         {isEditing ? (
           <>
@@ -75,13 +88,14 @@ export default function AdminBerita() {
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
       .then((res) => {
-        console.log(res.data)
-        setArticles(res.data.data);
+        console.log(res.data);
+        const sortedData = res.data.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setArticles(sortedData);
       })
       .catch((err) => {
         console.error("Failed to fetch articles", err);
       });
-  }, []);
+  }, [articles]);
 
   const handleNewTitleChange = (e) => {
     setNewJudul(e.target.value);
@@ -92,11 +106,20 @@ export default function AdminBerita() {
   };
 
   const handleAddArticle = () => {
-    if (newJudul.trim() && newDeskripsi.trim()) {
-      setArticles([{ judul: newJudul, deskripsi: newDeskripsi }, ...articles]);
-      setNewJudul("");
-      setNewDeskripsi("");
-    }
+    axios
+      .post(process.env.NEXT_PUBLIC_API_URL + "/api/berita", {
+        judul: newJudul,
+        deskripsi: newDeskripsi,
+        secretKey: process.env.NEXT_PUBLIC_SECRET_KEY
+      })
+      .then((res) => {
+        console.log(res.data);
+        setNewJudul("");
+        setNewDeskripsi("");
+      })
+      .catch((err) => {
+        console.error("Failed to add article", err);
+      });
   };
 
   const handleEdit = (index) => {
@@ -107,7 +130,10 @@ export default function AdminBerita() {
 
   const handleSave = () => {
     const updatedArticles = [...articles];
-    updatedArticles[editingIndex] = { judul: editJudul, deskripsi: editDeskripsi };
+    updatedArticles[editingIndex] = {
+      judul: editJudul,
+      deskripsi: editDeskripsi
+    };
     setArticles(updatedArticles);
     setEditingIndex(null);
     setEditJudul("");
@@ -153,6 +179,7 @@ export default function AdminBerita() {
                 key={index + indexOfFirstArticle}
                 title={article.judul}
                 content={article.deskripsi}
+                date={article.createdAt}
                 isEditing={index + indexOfFirstArticle === editingIndex}
                 editTitle={editJudul}
                 setEditTitle={setEditJudul}
