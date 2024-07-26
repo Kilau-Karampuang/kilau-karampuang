@@ -84,18 +84,24 @@ export default function AdminBerita() {
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 10;
 
-  useEffect(() => {
+  const fetchArticles = () => {
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
       .then((res) => {
         console.log(res.data);
-        const sortedData = res.data.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        const sortedData = res.data.data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
         setArticles(sortedData);
       })
       .catch((err) => {
         console.error("Failed to fetch articles", err);
       });
-  }, [articles]);
+  };
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
 
   const handleNewTitleChange = (e) => {
     setNewJudul(e.target.value);
@@ -116,6 +122,7 @@ export default function AdminBerita() {
         console.log(res.data);
         setNewJudul("");
         setNewDeskripsi("");
+        fetchArticles();
       })
       .catch((err) => {
         console.error("Failed to add article", err);
@@ -147,8 +154,17 @@ export default function AdminBerita() {
   };
 
   const handleDelete = (index) => {
-    const updatedArticles = articles.filter((_, i) => i !== index);
-    setArticles(updatedArticles);
+    axios
+      .delete(process.env.NEXT_PUBLIC_API_URL + "/api/berita/" + index, {
+        data: { secretKey: process.env.NEXT_PUBLIC_SECRET_KEY }
+      })
+      .then((res) => {
+        console.log(res.data);
+        fetchArticles();
+      })
+      .catch((err) => {
+        console.error("Failed to delete article", err);
+      });
   };
 
   const totalPages = Math.ceil(articles.length / articlesPerPage);
@@ -188,7 +204,7 @@ export default function AdminBerita() {
                 onEdit={() => handleEdit(index + indexOfFirstArticle)}
                 onSave={handleSave}
                 onCancel={handleCancelEdit}
-                onDelete={() => handleDelete(index + indexOfFirstArticle)}
+                onDelete={() => handleDelete(article._id)}
               />
             ))}
             <div className="flex justify-between mt-4">
