@@ -1,6 +1,7 @@
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import Hero from "@/Components/Hero";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 
 // TODO: LOADING, NOTIFY, EDIT FUNCTIONALITY, MODAL TO CONFIRM
@@ -76,6 +77,7 @@ const Article = ({
 };
 
 export default function AdminBerita() {
+  const router = useRouter();
   const [articles, setArticles] = useState([]);
   const [newJudul, setNewJudul] = useState("");
   const [newDeskripsi, setNewDeskripsi] = useState("");
@@ -101,6 +103,11 @@ export default function AdminBerita() {
   };
 
   useEffect(() => {
+    if(localStorage.getItem("isAdmin") !== "true") {
+      alert("Anda harus login sebagai admin terlebih dahulu");
+      router.push("/admin");
+    }
+
     fetchArticles();
   }, []);
 

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function AdminBerita() {
+  const router = useRouter();
   const [password, setPassword] = useState("");
 
   const handlePasswordChange = (e) => {
@@ -11,6 +13,7 @@ export default function AdminBerita() {
     if (password == process.env.NEXT_PUBLIC_PASSWORD) {
       alert("Password benar");
       localStorage.setItem("isAdmin", true);
+      router.push("/admin/berita");
     } else {
       alert("Password salah");
     };

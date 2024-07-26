@@ -1,12 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 const NavItem = ({ href, label }) => {
   return <Link href={href}>{label}</Link>;
 };
 
 const NavbarAdmin = () => {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin");
+    router.push("/");
+  };
+
   const links = [
     { href: "/admin/berita", label: "Berita" },
     { href: "/admin/artikel", label: "Artikel" },
@@ -23,7 +30,7 @@ const NavbarAdmin = () => {
             <NavItem key={index} href={link.href} label={link.label} />
           ))}
           <div className="relative group text-black">
-            <Link href="/logout" className="text-white border-2 border-black bg-black rounded-large px-4">Logout</Link>
+            <button onClick={handleLogout} className="text-white border-2 border-black bg-black rounded-large px-4">Logout</button>
           </div>
         </div>
       </nav>
