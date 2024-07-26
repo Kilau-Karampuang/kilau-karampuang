@@ -1,8 +1,21 @@
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import Hero from "@/Components/Hero";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const Article = ({ title, content, onEdit, onDelete, onSave, isEditing, editTitle, setEditTitle, editContent, setEditContent }) => {
+const Article = ({
+  title,
+  content,
+  onEdit,
+  onDelete,
+  onSave,
+  onCancel,
+  isEditing,
+  editTitle,
+  setEditTitle,
+  editContent,
+  setEditContent
+}) => {
   return (
     <div className="border-t border-gray-300 py-4">
       {isEditing ? (
@@ -25,74 +38,86 @@ const Article = ({ title, content, onEdit, onDelete, onSave, isEditing, editTitl
       )}
       <div className="mt-2 text-xs text-gray-600 flex items-center">
         {isEditing ? (
-          <button onClick={onSave} className="mr-2 text-blue-600">💾 Save</button>
+          <>
+            <button onClick={onSave} className="mr-2 text-blue-600">
+              💾 Save
+            </button>
+            <button onClick={onCancel} className="text-gray-600">
+              ❌ Cancel
+            </button>
+          </>
         ) : (
-          <button onClick={onEdit} className="mr-2 text-blue-600">✏️ Edit</button>
+          <>
+            <button onClick={onEdit} className="mr-2 text-blue-600">
+              ✏️ Edit
+            </button>
+            <button onClick={onDelete} className="text-red-600">
+              🗑️ Delete
+            </button>
+          </>
         )}
-        <button onClick={onDelete} className="text-red-600">🗑️ Delete</button>
       </div>
     </div>
   );
 };
 
 export default function AdminBerita() {
-  const [articles, setArticles] = useState([
-    { title: "Lorem Ipsum1", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum2", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum3", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum4", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum5", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum6", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum7", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum8", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum9", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum10", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum11", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum12", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum13", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum14", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum15", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum16", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum17", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-    { title: "Lorem Ipsum18", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec nisi nec est dignissim vestibulum a non velit. Etiam nisl lacus, congue vitae imperdiet sit amet, blandit ut eros. Sed nisi lectus, vulputate ac facilisis et, imperdiet sed ipsum. In pellentesque iaculis justo eget facilisis. Curabitur et lacus vel dolor fringilla scelerisque. Vestibulum dictum lacus magna, id rhoncus lorem blandit." },
-  ]);
-  const [newTitle, setNewTitle] = useState("");
-  const [newContent, setNewContent] = useState("");
+  const [articles, setArticles] = useState([]);
+  const [newJudul, setNewJudul] = useState("");
+  const [newDeskripsi, setNewDeskripsi] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
-  const [editTitle, setEditTitle] = useState("");
-  const [editContent, setEditContent] = useState("");
+  const [editJudul, setEditJudul] = useState("");
+  const [editDeskripsi, setEditDeskripsi] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 10;
 
+  useEffect(() => {
+    axios
+      .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
+      .then((res) => {
+        console.log(res.data)
+        setArticles(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch articles", err);
+      });
+  }, []);
+
   const handleNewTitleChange = (e) => {
-    setNewTitle(e.target.value);
+    setNewJudul(e.target.value);
   };
 
   const handleNewContentChange = (e) => {
-    setNewContent(e.target.value);
+    setNewDeskripsi(e.target.value);
   };
 
   const handleAddArticle = () => {
-    if (newTitle.trim() && newContent.trim()) {
-      setArticles([{ title: newTitle, content: newContent }, ...articles]);
-      setNewTitle("");
-      setNewContent("");
+    if (newJudul.trim() && newDeskripsi.trim()) {
+      setArticles([{ judul: newJudul, deskripsi: newDeskripsi }, ...articles]);
+      setNewJudul("");
+      setNewDeskripsi("");
     }
   };
 
   const handleEdit = (index) => {
     setEditingIndex(index);
-    setEditTitle(articles[index].title);
-    setEditContent(articles[index].content);
+    setEditJudul(articles[index].judul);
+    setEditDeskripsi(articles[index].deskripsi);
   };
 
   const handleSave = () => {
     const updatedArticles = [...articles];
-    updatedArticles[editingIndex] = { title: editTitle, content: editContent };
+    updatedArticles[editingIndex] = { judul: editJudul, deskripsi: editDeskripsi };
     setArticles(updatedArticles);
     setEditingIndex(null);
-    setEditTitle("");
-    setEditContent("");
+    setEditJudul("");
+    setEditDeskripsi("");
+  };
+
+  const handleCancelEdit = () => {
+    setEditingIndex(null);
+    setEditJudul("");
+    setEditDeskripsi("");
   };
 
   const handleDelete = (index) => {
@@ -103,7 +128,10 @@ export default function AdminBerita() {
   const totalPages = Math.ceil(articles.length / articlesPerPage);
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const currentArticles = articles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
 
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
@@ -116,22 +144,23 @@ export default function AdminBerita() {
   return (
     <>
       <NavbarAdmin />
-      <Hero heading="Berita Karampuang" subheading="Admin Dashboard"/>
+      <Hero heading="Berita Karampuang" subheading="Admin Dashboard" />
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-3/4 md:pr-4">
             {currentArticles.map((article, index) => (
               <Article
                 key={index + indexOfFirstArticle}
-                title={article.title}
-                content={article.content}
+                title={article.judul}
+                content={article.deskripsi}
                 isEditing={index + indexOfFirstArticle === editingIndex}
-                editTitle={editTitle}
-                setEditTitle={setEditTitle}
-                editContent={editContent}
-                setEditContent={setEditContent}
+                editTitle={editJudul}
+                setEditTitle={setEditJudul}
+                editContent={editDeskripsi}
+                setEditContent={setEditDeskripsi}
                 onEdit={() => handleEdit(index + indexOfFirstArticle)}
                 onSave={handleSave}
+                onCancel={handleCancelEdit}
                 onDelete={() => handleDelete(index + indexOfFirstArticle)}
               />
             ))}
@@ -157,13 +186,13 @@ export default function AdminBerita() {
           </div>
           <div className="md:w-1/4 mt-6 md:mt-0">
             <input
-              value={newTitle}
+              value={newJudul}
               onChange={handleNewTitleChange}
               placeholder="Judul berita baru..."
               className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             <textarea
-              value={newContent}
+              value={newDeskripsi}
               onChange={handleNewContentChange}
               placeholder="Ketik berita baru disini..."
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
