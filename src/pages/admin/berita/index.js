@@ -3,6 +3,7 @@ import Hero from "@/Components/Hero";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// TODO: LOADING, NOTIFY, EDIT FUNCTIONALITY, MODAL TO CONFIRM
 const Article = ({
   title,
   content,
