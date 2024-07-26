@@ -6,13 +6,15 @@ import axios from "axios";
 // TODO: LOADING AND TOAST TO NOTIFY
 export default function Berita() {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 10;
 
   useEffect(() => {
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
       .then((res) => {
-        console.log(res.data);
-        setData(res.data.data);
+        const sortedData = res.data.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setData(sortedData);
       })
       .catch((err) => {
         console.log(err);
@@ -39,9 +41,6 @@ export default function Berita() {
       </div>
     );
   };
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const articlesPerPage = 10;
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
