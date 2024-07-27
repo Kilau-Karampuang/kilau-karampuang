@@ -34,7 +34,7 @@ const cardData = [
   },
 ];
 
-export default function Makanan() {
+export default function Tarian() {
   const [visible, setVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
