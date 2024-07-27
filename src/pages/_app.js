@@ -1,3 +1,4 @@
+import Footer from "@/Components/Footer";
 import "@/styles/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import Head from "next/head";
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }) {
     </Head>
       <NextUIProvider className="max-w-screen overflow-hidden">
         <Component {...pageProps} />
+        <Footer />
       </NextUIProvider>
     </>
   );

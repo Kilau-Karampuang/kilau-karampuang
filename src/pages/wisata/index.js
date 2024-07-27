@@ -33,6 +33,15 @@ export default function Wisata(){
                 heading="Wisata Karampuang"
                 subheading="Jelajahi Pesona"
                 image="/Vector_S.png" />
+
+            <Heading 
+                heading={<>Pesona <b>Wisata</b></>}
+                subheading="Saksikan keindahan alam tersembunyi di Pulau Karampuang"
+            />
+            <div className="flex justify-center mt-10">
+                <YouTubeEmbed videoId="hRYZ_fCX_pk" />
+            </div>
+
             <p className="font-montserrat text-lg p-4 max-w-3xl mt-4 mb-20 text-center mx-auto">
                 <b>Selamat datang di Pulau Karampuang,</b><br /> surga tersembunyi di Sulawesi yang menawarkan berbagai destinasi wisata yang menarik dengan pesona alam dan keindahan bawah laut yang memukau. 
                 Nikmati petualangan diving dan snorkeling di perairan jernih yang penuh dengan terumbu karang dan kehidupan laut yang berwarna-warni. 
@@ -42,13 +51,7 @@ export default function Wisata(){
                 yang dipercaya membawa keberuntungan bagi para pencari cinta,
                 Karampuang menanti Anda dengan segala pesonanya!
             </p> 
-            <Heading 
-                heading={<>Pesona <b>Wisata</b></>}
-                subheading="Saksikan keindahan alam tersembunyi di Pulau Karampuang"
-            />
-            <div className="flex justify-center mt-10">
-                <YouTubeEmbed videoId="hRYZ_fCX_pk" />
-            </div>
+            
             <Heading
                 heading={<>Destinasi <b>Unggulan</b></>}
                 subheading="Jelajahi berbagai tempat dan aktivitas tak terlupakan"

@@ -31,9 +31,21 @@ export default function Profil(){
             <h1 className="text-center text-2xl my-4">
                 Desa dan Dusun
             </h1>
+            <p className="text-center max-w-3xl text-lg mx-auto px-4 mb-8">
+                Desa Karampuang terdiri dari 11 dusun, masing-masing memiliki karakteristik dan daya tarik tersendiri. 
+                Beberapa dusun di antaranya adalah Dusun Karampuang I, Dusun Karampuang II, Dusun Gunung Gembira, Dusun Joli, 
+                Dusun Batu Bira, Dusun Karaeang, Dusun Bajak, Dusun Ujung Bulo, Dusun Ujung Bulo Wisata, Dusun Sepang, dan Dusun Nangka.
+            </p>
+
+            <h1 className="text-center text-2xl my-4">
+                Asal-Usul Penamaan
+            </h1>
             <p className="text-center max-w-3xl text-lg mx-auto px-4 mb-20">
-                Desa Karampuang terdiri dari beberapa dusun, masing-masing memiliki karakteristik dan daya tarik tersendiri. 
-                Beberapa dusun di antaranya adalah Dusun Joli, Dusun Ujung Bulo, Dusun Batu Birah, dll.
+            Ada dua versi cerita tentang asal-usul nama Karampuang. 
+            Versi pertama mengatakan bahwa nama Karampuang berasal dari bahasa Mamuju yang berarti rembulan atau bulan purnama. 
+            Versi kedua menjelaskan bahwa nama tersebut terdiri dari kata "karam" atau "kara" yang berarti batu karang 
+            dan "puang" yang berarti raja, yang menunjukkan bahwa pulau ini dulunya merupakan tempat persembunyian para raja. 
+            Selain itu, pulau ini juga disebut Pulau Buaya karena bentuknya yang menyerupai moncong buaya ketika dilihat dari atas.
             </p>
         </>
     )

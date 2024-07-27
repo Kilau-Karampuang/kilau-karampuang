@@ -5,7 +5,6 @@ import Hero from "@/Components/Hero";
 import Map from "@/Components/Map";
 import Heading from "@/Components/Heading";
 import YouTubeEmbed from "@/Components/YoutubeEmbed";
-import Footer from "@/Components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +36,6 @@ export default function Home() {
         {/* Other Components Here */}
         <Map />
       </main>
-      <Footer />
     </>
   );
 }
