@@ -5,32 +5,28 @@ import { useState } from "react";
 
 const cardData = [
   {
-    imageSrc: "https://nextui.org/images/hero-card.jpeg",
-    altText: "Woman listening to music",
-    heading: "UMKM",
-    title: "Available soon.",
-    details: "Details about UMKM will be available soon."
+    imageSrc: "/cover-butta.png",
+    altText: "Tari Butta Kalassukangku",
+    title: "Tari Butta Kalassukangku",
+    details: "Will be available soon."
   },
   {
-    imageSrc: "https://nextui.org/images/hero-card.jpeg",
-    altText: "Woman listening to music",
-    heading: "UMKM",
-    title: "Available soon.",
-    details: "Details about UMKM will be available soon."
+    imageSrc: "/cover-lipa.png",
+    altText: "Tari Lipa Sabbe",
+    title: "Tari Lipa Sabbe",
+    details: "Will be available soon."
   },
   {
-    imageSrc: "https://nextui.org/images/hero-card.jpeg",
-    altText: "Woman listening to music",
-    heading: "UMKM",
-    title: "Available soon.",
-    details: "Details about UMKM will be available soon."
+    imageSrc: "/cover-lita.png",
+    altText: "Tari Lita Mandar",
+    title: "Tari Lita Mandar",
+    details: "Will be available soon."
   },
   {
-    imageSrc: "https://nextui.org/images/hero-card.jpeg",
-    altText: "Woman listening to music",
-    heading: "UMKM",
-    title: "Available soon.",
-    details: "Details about UMKM will be available soon."
+    imageSrc: "/cover-tulolona.png",
+    altText: "Tari Tulolona",
+    title: "Tari Tulolona",
+    details: "Will be available soon."
   },
 ];
 
@@ -53,18 +49,13 @@ export default function Tarian() {
       <Navbar />
       <Hero heading="Tarian Karampuang" subheading="Eksplorasi Bersama" />
 
-      <div className="max-w-screen gap-2 grid grid-cols-12 grid-rows-5 px-8">
+      <div className="max-w-screen px-8 flex flex-col gap-8 pb-8">
         {cardData.map((card, index) => (
           <Card
             key={index}
             isFooterBlurred
             className="w-full h-[300px] col-span-12 sm:col-span-3 hover:scale-105"
           >
-            <CardHeader className="absolute z-10 top-1 flex-col items-start">
-              <p className="text-tiny text-white/60 uppercase font-bold">
-                {card.heading}
-              </p>
-            </CardHeader>
             <Image
               removeWrapper
               alt={card.altText}
