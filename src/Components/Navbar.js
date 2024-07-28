@@ -9,7 +9,7 @@ const NavItem = ({ href, label }) => {
 const Navbar = () => {
   const links = [
     { href: "/profile", label: "Profile" },
-    { href: "/wisata", label: "Wisata" },
+    { href: "/wisata", label: "Wisata" }
   ];
 
   return (
@@ -47,6 +47,17 @@ const Navbar = () => {
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
               >
                 Kalkulator Stunting
+              </Link>
+            </div>
+          </div>
+          <div className="relative group text-black">
+            <button className="text-black">Data Desa</button>
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Link
+                href="/peta"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+              >
+                Peta Desa
               </Link>
             </div>
           </div>
