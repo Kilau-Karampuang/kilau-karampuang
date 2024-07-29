@@ -48,6 +48,12 @@ const Navbar = () => {
               >
                 Kalkulator Stunting
               </Link>
+              <Link
+                href="/tinggi-potensi-genetik"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+              >
+                Kalkulator TPG
+              </Link>
             </div>
           </div>
           <div className="relative group text-black">
