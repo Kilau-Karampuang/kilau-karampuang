@@ -78,7 +78,7 @@ export default function Tarian() {
 
       {visible && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded-md shadow-lg max-w-md w-full relative">
+          <div className="bg-white p-8 rounded-md shadow-lg max-w-[60%] w-full relative">
             <button className="absolute top-2 right-2 text-gray-600" onClick={closeModal}>
               X
             </button>
