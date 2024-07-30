@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-// TODO: LOADING, NOTIFY, EDIT FUNCTIONALITY, MODAL TO CONFIRM
 const Article = ({
   title,
   content,
@@ -17,7 +16,7 @@ const Article = ({
   editTitle,
   setEditTitle,
   editContent,
-  setEditContent
+  setEditContent,
 }) => {
   const readableDate = new Date(date).toLocaleString("en-US", {
     weekday: "long",
@@ -27,7 +26,7 @@ const Article = ({
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
-    timeZoneName: "short"
+    timeZoneName: "short",
   });
 
   return (
@@ -103,7 +102,7 @@ export default function AdminBerita() {
   };
 
   useEffect(() => {
-    if(localStorage.getItem("isAdmin") !== "true") {
+    if (localStorage.getItem("isAdmin") !== "true") {
       alert("Anda harus login sebagai admin terlebih dahulu");
       router.push("/admin");
     }
@@ -124,7 +123,7 @@ export default function AdminBerita() {
       .post(process.env.NEXT_PUBLIC_API_URL + "/api/berita", {
         judul: newJudul,
         deskripsi: newDeskripsi,
-        secretKey: process.env.NEXT_PUBLIC_SECRET_KEY
+        secretKey: process.env.NEXT_PUBLIC_SECRET_KEY,
       })
       .then((res) => {
         console.log(res.data);
@@ -146,13 +145,29 @@ export default function AdminBerita() {
   const handleSave = () => {
     const updatedArticles = [...articles];
     updatedArticles[editingIndex] = {
+      ...updatedArticles[editingIndex],
       judul: editJudul,
-      deskripsi: editDeskripsi
+      deskripsi: editDeskripsi,
     };
-    setArticles(updatedArticles);
-    setEditingIndex(null);
-    setEditJudul("");
-    setEditDeskripsi("");
+    axios
+      .put(
+        process.env.NEXT_PUBLIC_API_URL + "/api/berita/" + updatedArticles[editingIndex]._id,
+        {
+          judul: editJudul,
+          deskripsi: editDeskripsi,
+          secretKey: process.env.NEXT_PUBLIC_SECRET_KEY,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setArticles(updatedArticles);
+        setEditingIndex(null);
+        setEditJudul("");
+        setEditDeskripsi("");
+      })
+      .catch((err) => {
+        console.error("Failed to update article", err);
+      });
   };
 
   const handleCancelEdit = () => {
@@ -161,10 +176,10 @@ export default function AdminBerita() {
     setEditDeskripsi("");
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = (id) => {
     axios
-      .delete(process.env.NEXT_PUBLIC_API_URL + "/api/berita/" + index, {
-        data: { secretKey: process.env.NEXT_PUBLIC_SECRET_KEY }
+      .delete(process.env.NEXT_PUBLIC_API_URL + "/api/berita/" + id, {
+        data: { secretKey: process.env.NEXT_PUBLIC_SECRET_KEY },
       })
       .then((res) => {
         console.log(res.data);
@@ -178,10 +193,7 @@ export default function AdminBerita() {
   const totalPages = Math.ceil(articles.length / articlesPerPage);
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle
-  );
+  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
 
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
