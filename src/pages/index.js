@@ -17,7 +17,7 @@ export default function Home() {
       <Hero heading="Pulau Karampuang" subheading="Menyapa Indahnya" />
       <div className="relative w-[180vw] md:w-[140vw] -ml-[20vw] h-56 bg-white">
         <Image
-          className="absolute -top-40"
+          className="absolute -top-40 py-24"
           src="/Highlight.png"
           alt="Gambar Highlith Karampuang"
           height={100}
@@ -26,7 +26,7 @@ export default function Home() {
         />
       </div>
       <Heading
-        className="mb-10 md:mt-24"
+        className="mb-10 md:mt-24 pt-40"
         heading={
           <>
             Sebuah <b>Dokumenter</b>

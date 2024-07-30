@@ -15,8 +15,7 @@ const NavbarAdmin = () => {
   };
 
   const links = [
-    { href: "/admin/berita", label: "Berita" },
-    { href: "/admin/artikel", label: "Artikel" },
+    { href: "/admin/berita", label: "Berita" }
   ];
 
   return (
