@@ -44,3 +44,16 @@ body {
 .wisata p {
   @apply mb-4
 }
+
+.artikel p img {
+  width: auto; 
+  height: 15rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.artikel p:has(img) {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent images from wrapping to the next line */
+}

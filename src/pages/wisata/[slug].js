@@ -16,12 +16,17 @@ function BlogPost({ content, data }) {
         subheading={data.subheading}
         heading={data.heading} />
       <div className='wisata max-w-2xl mx-auto mb-12 p-4'>
-        <Image 
-          className='mb-12'
-          src={`/${data.cover}`}
-          width={1024}
-          height={512} />
+        <div className="relative mb-12 w-full h-96 overflow-hidden"> 
+          <Image
+            className='mb-12 w-full'
+            src={`/${data.cover}`}
+            width={1024}
+            height={512}
+            objectFit='cover'
+            objectPosition='center' />  
+          </div>
         <div 
+          className='artikel'
           dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </div>
