@@ -1,6 +1,6 @@
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
-import { Card, CardFooter, Image, Button, CardHeader } from "@nextui-org/react";
+import { Card, CardFooter, Image, Button } from "@nextui-org/react";
 import { useState } from "react";
 
 const cardData = [
@@ -8,25 +8,25 @@ const cardData = [
     imageSrc: "/cover-butta.png",
     altText: "Tari Butta Kalassukangku",
     title: "Tari Butta Kalassukangku",
-    details: "Will be available soon."
+    link: "https://youtu.be/D6JqtWEk6Y0"
   },
   {
     imageSrc: "/cover-lipa.png",
     altText: "Tari Lipa Sabbe",
     title: "Tari Lipa Sabbe",
-    details: "Will be available soon."
+    link: "https://youtu.be/mVjjLRLFOzc"
   },
   {
     imageSrc: "/cover-lita.png",
     altText: "Tari Lita Mandar",
     title: "Tari Lita Mandar",
-    details: "Will be available soon."
+    link: "https://youtu.be/wVjPXSmq4Ac"
   },
   {
     imageSrc: "/cover-tulolona.png",
     altText: "Tari Tulolona",
     title: "Tari Tulolona",
-    details: "Will be available soon."
+    link: "https://youtu.be/mNQYMaDYCAA"
   },
 ];
 
@@ -42,6 +42,11 @@ export default function Tarian() {
   const closeModal = () => {
     setVisible(false);
     setSelectedCard(null);
+  };
+
+  const getYoutubeEmbedUrl = (url) => {
+    const videoId = url.split("v=")[1] || url.split("youtu.be/")[1];
+    return `https://www.youtube.com/embed/${videoId}`;
   };
 
   return (
@@ -76,22 +81,27 @@ export default function Tarian() {
         ))}
       </div>
 
-      {visible && (
+      {visible && selectedCard && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-8 rounded-md shadow-lg max-w-[60%] w-full relative">
             <button className="absolute top-2 right-2 text-gray-600" onClick={closeModal}>
               X
             </button>
             <div className="mb-4">
-              <h2 className="text-xl font-bold">{selectedCard.heading}</h2>
+              <h2 className="text-xl font-bold text-center">{selectedCard.title}</h2>
             </div>
-            <Image
-              removeWrapper
-              alt={selectedCard.altText}
-              className="w-full h-auto mb-4 object-cover"
-              src={selectedCard.imageSrc}
-            />
-            <p>{selectedCard.details}</p>
+            {selectedCard.link ? (
+              <iframe
+                width="560"
+                height="315"
+                src={getYoutubeEmbedUrl(selectedCard.link)}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full"
+              ></iframe>
+            ) : (
+              <p>Video sedang diproses!</p>
+            )}
           </div>
         </div>
       )}
