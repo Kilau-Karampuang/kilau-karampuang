@@ -26,6 +26,13 @@ export default function TinggiPotensiGenetik() {
       return;
     }
 
+    if (fatherHeightNum < 0 || motherHeightNum < 0) {
+      setError("Tinggi badan tidak boleh negatif!");
+      setInitialModal(false);
+      setModalIsOpen(true);
+      return;
+    }
+
     setError("");
 
     if (isMale) {
