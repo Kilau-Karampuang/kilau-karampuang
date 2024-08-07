@@ -3,6 +3,8 @@ import Hero from "@/Components/Hero";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { useContext } from "react";
+import { LoadingContext } from "@/Context/LoadingContext";
 
 const Article = ({
   title,
@@ -84,9 +86,11 @@ export default function AdminBerita() {
   const [editJudul, setEditJudul] = useState("");
   const [editDeskripsi, setEditDeskripsi] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
   const articlesPerPage = 10;
 
   const fetchArticles = () => {
+    setIsLoading(true);
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
       .then((res) => {
@@ -95,9 +99,11 @@ export default function AdminBerita() {
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         setArticles(sortedData);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error("Failed to fetch articles", err);
+        setIsLoading(false);
       });
   };
 
@@ -119,6 +125,7 @@ export default function AdminBerita() {
   };
 
   const handleAddArticle = () => {
+    setIsLoading(true);
     axios
       .post(process.env.NEXT_PUBLIC_API_URL + "/api/berita", {
         judul: newJudul,
@@ -129,10 +136,12 @@ export default function AdminBerita() {
         console.log(res.data);
         setNewJudul("");
         setNewDeskripsi("");
+        setIsLoading(false);
         fetchArticles();
       })
       .catch((err) => {
         console.error("Failed to add article", err);
+        setIsLoading(false);
       });
   };
 
@@ -149,6 +158,7 @@ export default function AdminBerita() {
       judul: editJudul,
       deskripsi: editDeskripsi,
     };
+    setIsLoading(true);
     axios
       .put(
         process.env.NEXT_PUBLIC_API_URL + "/api/berita/" + updatedArticles[editingIndex]._id,
@@ -164,9 +174,11 @@ export default function AdminBerita() {
         setEditingIndex(null);
         setEditJudul("");
         setEditDeskripsi("");
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error("Failed to update article", err);
+        setIsLoading(false);
       });
   };
 
@@ -177,16 +189,19 @@ export default function AdminBerita() {
   };
 
   const handleDelete = (id) => {
+    setIsLoading(true);
     axios
       .delete(process.env.NEXT_PUBLIC_API_URL + "/api/berita/" + id, {
         data: { secretKey: process.env.NEXT_PUBLIC_SECRET_KEY },
       })
       .then((res) => {
         console.log(res.data);
+        setIsLoading(false);
         fetchArticles();
       })
       .catch((err) => {
         console.error("Failed to delete article", err);
+        setIsLoading(false);
       });
   };
 

@@ -2,22 +2,28 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
 import axios from "axios";
+import { useContext } from "react";
+import { LoadingContext } from "@/Context/LoadingContext";
 
 // TODO: LOADING AND TOAST TO NOTIFY
 export default function Berita() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 10;
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
       .then((res) => {
         const sortedData = res.data.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setData(sortedData);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 
