@@ -1,32 +1,28 @@
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
-import { Card, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardFooter, Button } from "@nextui-org/react";
 import { useState } from "react";
 
 const cardData = [
   {
-    imageSrc: "/cover-butta.png",
+    videoId: "D6JqtWEk6Y0",
     altText: "Tari Butta Kalassukangku",
     title: "Tari Butta Kalassukangku",
-    link: "https://youtu.be/D6JqtWEk6Y0"
   },
   {
-    imageSrc: "/cover-lipa.png",
+    videoId: "mVjjLRLFOzc",
     altText: "Tari Lipa Sabbe",
     title: "Tari Lipa Sabbe",
-    link: "https://youtu.be/mVjjLRLFOzc"
   },
   {
-    imageSrc: "/cover-lita.png",
+    videoId: "wVjPXSmq4Ac",
     altText: "Tari Lita Mandar",
     title: "Tari Lita Mandar",
-    link: "https://youtu.be/wVjPXSmq4Ac"
   },
   {
-    imageSrc: "/cover-tulolona.png",
+    videoId: "mNQYMaDYCAA",
     altText: "Tari Tulolona",
     title: "Tari Tulolona",
-    link: "https://youtu.be/mNQYMaDYCAA"
   },
 ];
 
@@ -44,9 +40,12 @@ export default function Tarian() {
     setSelectedCard(null);
   };
 
-  const getYoutubeEmbedUrl = (url) => {
-    const videoId = url.split("v=")[1] || url.split("youtu.be/")[1];
+  const getYoutubeEmbedUrl = (videoId) => {
     return `https://www.youtube.com/embed/${videoId}`;
+  };
+
+  const getYoutubeThumbnailUrl = (videoId) => {
+    return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   };
 
   return (
@@ -61,11 +60,10 @@ export default function Tarian() {
             isFooterBlurred
             className="w-full h-[300px] col-span-12 sm:col-span-3 hover:scale-105"
           >
-            <Image
-              removeWrapper
+            <img
               alt={card.altText}
               className="z-0 w-full h-full object-cover"
-              src={card.imageSrc}
+              src={getYoutubeThumbnailUrl(card.videoId)}
             />
             <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
               <div className="flex flex-grow gap-2 items-center">
@@ -90,18 +88,14 @@ export default function Tarian() {
             <div className="mb-4">
               <h2 className="text-xl font-bold text-center">{selectedCard.title}</h2>
             </div>
-            {selectedCard.link ? (
-              <iframe
-                width="560"
-                height="315"
-                src={getYoutubeEmbedUrl(selectedCard.link)}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full"
-              ></iframe>
-            ) : (
-              <p>Video sedang diproses!</p>
-            )}
+            <iframe
+              width="560"
+              height="315"
+              src={getYoutubeEmbedUrl(selectedCard.videoId)}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full"
+            ></iframe>
           </div>
         </div>
       )}
