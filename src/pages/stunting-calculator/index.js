@@ -30,35 +30,28 @@ function StuntingCalculator() {
     setError('');
 
     let riskScore = 0;
-    let totalWeight = 0;
+    let totalWeight = 100; // Total weight must be 100%
 
     if (height < 145) {
-      riskScore += 20; // 20% weight for height
-      totalWeight += 20;
+      riskScore += 15; // 15% weight for height
     }
     if (weight / ((height / 100) * (height / 100)) < 18.5) {
-      riskScore += 25; // 25% weight for BMI
-      totalWeight += 25;
+      riskScore += 20; // 20% weight for BMI
     }
     if (age < 20 || age > 35) {
       riskScore += 15; // 15% weight for age
-      totalWeight += 15;
     }
     if (hemoglobin < 11) {
-      riskScore += 20; // 20% weight for hemoglobin
-      totalWeight += 20;
+      riskScore += 15; // 15% weight for hemoglobin
     }
     if (maternalDisease) {
-      riskScore += 20; // 20% weight for maternal disease
-      totalWeight += 20;
+      riskScore += 15; // 15% weight for maternal disease
     }
     if (smoking) {
       riskScore += 10; // 10% weight for smoking
-      totalWeight += 10;
     }
     if (economicStatus === 'low') {
-      riskScore += 30; // 30% weight for low economic status
-      totalWeight += 30;
+      riskScore += 10; // 10% weight for low economic status
     }
 
     let normalizedRiskScore = (riskScore / totalWeight) * 100;
