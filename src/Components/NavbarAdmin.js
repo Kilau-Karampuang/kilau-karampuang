@@ -14,9 +14,7 @@ const NavbarAdmin = () => {
     router.push("/");
   };
 
-  const links = [
-    { href: "/admin/berita", label: "Berita" }
-  ];
+  const links = [{ href: "/admin/berita", label: "Berita" }];
 
   return (
     <div className="fixed w-full z-50">
@@ -29,7 +27,23 @@ const NavbarAdmin = () => {
             <NavItem key={index} href={link.href} label={link.label} />
           ))}
           <div className="relative group text-black">
-            <button onClick={handleLogout} className="text-white border-2 border-black bg-black rounded-large px-4">Logout</button>
+            <button className="text-black">Budaya</button>
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Link
+                href="/admin/tarian"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+              >
+                Tarian
+              </Link>
+            </div>
+          </div>
+          <div className="relative group text-black">
+            <button
+              onClick={handleLogout}
+              className="text-white border-2 border-black bg-black rounded-large px-4"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </nav>

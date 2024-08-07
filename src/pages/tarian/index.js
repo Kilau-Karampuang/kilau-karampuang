@@ -1,34 +1,31 @@
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
 import { Card, CardFooter, Button } from "@nextui-org/react";
-import { useState } from "react";
-
-const cardData = [
-  {
-    videoId: "D6JqtWEk6Y0",
-    altText: "Tari Butta Kalassukangku",
-    title: "Tari Butta Kalassukangku",
-  },
-  {
-    videoId: "mVjjLRLFOzc",
-    altText: "Tari Lipa Sabbe",
-    title: "Tari Lipa Sabbe",
-  },
-  {
-    videoId: "wVjPXSmq4Ac",
-    altText: "Tari Lita Mandar",
-    title: "Tari Lita Mandar",
-  },
-  {
-    videoId: "mNQYMaDYCAA",
-    altText: "Tari Tulolona",
-    title: "Tari Tulolona",
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { LoadingContext } from "@/Context/LoadingContext";
 
 export default function Tarian() {
   const [visible, setVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [cardData, setCardData] = useState([]);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
+  
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(process.env.NEXT_PUBLIC_API_URL + "/api/tarian")
+      .then((res) => {
+        console.log(res.data);
+        setCardData(res.data.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch tarian", err);
+        setIsLoading(false);
+      });
+  }, []);
 
   const openModal = (card) => {
     setSelectedCard(card);
@@ -61,7 +58,7 @@ export default function Tarian() {
             className="w-full h-[300px] col-span-12 sm:col-span-3 hover:scale-105"
           >
             <img
-              alt={card.altText}
+              alt={card.title}
               className="z-0 w-full h-full object-cover"
               src={getYoutubeThumbnailUrl(card.videoId)}
             />
@@ -82,11 +79,16 @@ export default function Tarian() {
       {visible && selectedCard && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-8 rounded-md shadow-lg max-w-[60%] w-full relative">
-            <button className="absolute top-2 right-2 text-gray-600" onClick={closeModal}>
+            <button
+              className="absolute top-2 right-2 text-gray-600"
+              onClick={closeModal}
+            >
               X
             </button>
             <div className="mb-4">
-              <h2 className="text-xl font-bold text-center">{selectedCard.title}</h2>
+              <h2 className="text-xl font-bold text-center">
+                {selectedCard.title}
+              </h2>
             </div>
             <iframe
               width="560"
