@@ -2,34 +2,49 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const Map = () => {
-  const [activeLocation, setActiveLocation] = useState("Klik Peta untuk Berinteraksi!");
+  const [activeLocation, setActiveLocation] = useState(
+    "Klik Peta untuk Berinteraksi!"
+  );
   const [activeDescription, setActiveDescription] = useState("");
 
   useEffect(() => {
     const descriptions = {
-      'Dusun Karampuang 1': 'Description for location 1',
-      'Dusun Karampuang 2': 'Description for location 2',
-      'Dusun Joli': 'Description for location 3',
-      'Dusun Ujung Bulo': 'Description for location 4',
-      'Dusun Ujung Bulo Wisata': 'Description for location 5',
-      'Dusun Karaeang': 'Description for location 6',
-      'Dusun Nangka': 'Description for location 7',
-      'Dusun Sepang': 'Description for location 8',
-      'Dusun Batu Bira': 'Description for location 9',
-      'Dusun Gunung Gembira': 'Description for location 10',
-      'Dusun Bajak': 'Description for location 11'
+      "Dusun Karampuang 1":
+        "Dusun Karampuang 1 adalah dusun yang terletak di sisi barat Pulau Karampuang. Dusun ini memiliki luas wilayah yang paling kecil diantara dusun-dusun yang lain. Penduduk laki-laki di dusun ini mencapai 93 jiwa sementara penduduk perempuan mencapai 78 jiwa. Seluruh penduduk tersebut terangkum pada 58 KK yang dipimpin oleh laki-laki dan 13 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai pedagang/wiraswasta, pegawai swasta, petani dan PNS.",
+      "Dusun Karampuang 2": 
+        "Dusun Karampuang 2 adalah dusun yang terletak di sisi barat Pulau Karampuang. Dusun ini terletak tepat diatas Dusun Karampuang 1. Penduduk laki-laki di dusun ini mencapai 160 jiwa sementara penduduk perempuan mencapai 157 jiwa. Seluruh penduduk tersebut terangkum pada 94 KK yang dipimpin oleh laki-laki dan 21 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai petani, pedagang/wiraswasta, pegawai swasta, dan PNS.",
+      "Dusun Joli": 
+        "Dusun Joli adalah dusun yang terletak di sisi barat Pulau Karampuang. Dusun ini terletak dibawah Dusun Karampuang 1. Penduduk laki-laki di dusun ini mencapai 109 jiwa sementara penduduk perempuan mencapai 113 jiwa. Seluruh penduduk tersebut terangkum pada 53 KK yang dipimpin oleh laki-laki dan 11 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai pedagang/wiraswasta, petani, pegawai swasta, dan PNS.",
+      "Dusun Ujung Bulo": 
+        "Dusun Ujung Bulo adalah dusun yang terletak di sisi timur Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 187 jiwa sementara penduduk perempuan mencapai 194 jiwa. Seluruh penduduk tersebut terangkum pada 110 KK yang dipimpin oleh laki-laki dan 22 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai petani, pedagang/wiraswasta, pegawai swasta, dan PNS.",
+      "Dusun Ujung Bulo Wisata": 
+        "Dusun Ujung Bulo Wisata adalah dusun yang terletak di sisi timur laut Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 113 jiwa sementara penduduk perempuan mencapai 135 jiwa. Seluruh penduduk tersebut terangkum pada 78 KK yang dipimpin oleh laki-laki dan tidak ada KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai pedagang/wiraswasta, buruh nelayan, dan petani.",
+      "Dusun Karaeang": 
+        "Dusun Karaeang adalah dusun yang terletak di sisi selatan Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 173 jiwa sementara penduduk perempuan mencapai 152 jiwa. Seluruh penduduk tersebut terangkum pada 68 KK yang dipimpin oleh laki-laki dan 14 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai wiraswasta/pedagang, diikuti dengan pekerjaan sebagai nelayan, petani, pegawai swasta, dan bidan",
+      "Dusun Nangka": 
+        "Dusun Nangka adalah dusun yang terletak di sisi barat laut Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 124 jiwa sementara penduduk perempuan mencapai 119 jiwa. Seluruh penduduk tersebut terangkum pada 57 KK yang dipimpin oleh laki-laki dan 12 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai petani, pedagang/wiraswasta, pegawai swasta, dan buruh nelayan.",
+      "Dusun Sepang": 
+        "Dusun Sepang adalah dusun yang terletak di sisi utara Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 166 jiwa sementara penduduk perempuan mencapai 137 jiwa. Seluruh penduduk tersebut terangkum pada 91 KK yang dipimpin oleh laki-laki dan 13 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai pedagang/wiraswasta, petani, dan perawat",
+      "Dusun Batu Bira": 
+        "Dusun Batu Bira adalah dusun yang terletak di sisi barat daya Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 193 jiwa sementara penduduk perempuan mencapai 173 jiwa. Seluruh penduduk tersebut terangkum pada 104 KK yang dipimpin oleh laki-laki dan 18 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai petani, pedagang/wiraswasta, pegawai swasta, dan PNS.",
+      "Dusun Gunung Gembira": 
+        "Dusun Gunung Gembira adalah dusun yang terletak di sisi tengah Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 139 jiwa sementara penduduk perempuan mencapai 134 jiwa. Seluruh penduduk tersebut terangkum pada 84 KK yang dipimpin oleh laki-laki dan 15 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai petani, pedagang/wiraswasta, PNS, dan buruh nelayan.",
+      "Dusun Bajak": 
+        "Dusun Bajak adalah dusun yang terletak di sisi tenggara Pulau Karampuang. Penduduk laki-laki di dusun ini mencapai 250 jiwa sementara penduduk perempuan mencapai 223 jiwa. Seluruh penduduk tersebut terangkum pada 110 KK yang dipimpin oleh laki-laki dan 12 KK yang dipimpin oleh perempuan. Penduduk dusun ini mayoritas memiliki pekerjaan sebagai nelayan, diikuti dengan pekerjaan sebagai petani, pedagang/wiraswasta, dan pegawai swasta.",
     };
 
     setActiveDescription(descriptions[activeLocation]);
   }, [activeLocation]);
-  
+
   return (
     <>
       <div className="flex flex-col justify-center items-center p-4">
         <h1 className="text-2xl font-montserrat">
           Jelajahi <span className="font-bold">Karampuang</span>
         </h1>
-        <p className="mb-8 text-lg font-montserrat">Kenali pulau ini agar lebih mudah menelusuri</p>
+        <p className="mb-8 text-lg font-montserrat">
+          Kenali pulau ini agar lebih mudah menelusuri
+        </p>
         <div className="flex flex-row justify-center items-center w-full">
           <div className="w-max">
             <svg
@@ -105,11 +120,11 @@ const Map = () => {
               </g>
             </svg>
           </div>
-          <div className="w-max p-4">
-            <p className="text-xl font-bold font-montserrat text-center">
+          <div className="w-fit p-4">
+            <p className="text-xl font-bold font-montserrat text-center pb-4">
               {activeLocation}
             </p>
-            <p className="text-l font-montserrat text-center">
+            <p className="text-l font-montserrat text-center text-justify">
               {activeDescription}
             </p>
           </div>
