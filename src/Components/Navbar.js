@@ -3,11 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const NavItem = ({ href, label }) => {
-  return (
-    <Link href={href}>
-      {label}
-    </Link>
-  );
+  return <Link href={href}>{label}</Link>;
 };
 
 const Navbar = () => {
@@ -15,7 +11,7 @@ const Navbar = () => {
   const links = [
     { href: "/", label: "Beranda" },
     { href: "/profile", label: "Profile" },
-    { href: "/wisata", label: "Wisata" },
+    { href: "/wisata", label: "Wisata" }
   ];
 
   return (
@@ -56,11 +52,6 @@ const Navbar = () => {
                   Kalkulator TPG
                 </span>
               </Link>
-            </div>
-          </div>
-          <div className="relative group text-black">
-            <button className="text-black">Data Desa</button>
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <Link href="/peta">
                 <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                   Peta Desa
@@ -70,18 +61,34 @@ const Navbar = () => {
           </div>
         </div>
         <div className="md:hidden flex items-center">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-black focus:outline-none">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-black focus:outline-none"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+              ></path>
             </svg>
           </button>
         </div>
       </nav>
       {isOpen && (
         <div className="md:hidden bg-white rounded-md shadow-lg mt-2 mx-10 p-4">
-          {links.map((link, index) => (
-            <NavItem key={index} href={link.href} label={link.label} />
-          ))}
+          <div className="flex flex-col gap-2">
+            {links.map((link, index) => (
+              <NavItem key={index} href={link.href} label={link.label} />
+            ))}
+          </div>
           <div className="relative group text-black">
             <button className="w-full text-left py-2">Budaya</button>
             <div className="bg-white rounded-md shadow-lg">
@@ -110,11 +117,6 @@ const Navbar = () => {
                   Kalkulator TPG
                 </span>
               </Link>
-            </div>
-          </div>
-          <div className="relative group text-black">
-            <button className="w-full text-left py-2">Data Desa</button>
-            <div className="bg-white rounded-md shadow-lg">
               <Link href="/peta">
                 <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                   Peta Desa
