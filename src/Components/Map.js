@@ -124,7 +124,7 @@ const Map = () => {
             <p className="text-xl font-bold font-montserrat text-center pb-4">
               {activeLocation}
             </p>
-            <p className="text-l font-montserrat text-center text-justify">
+            <p className="text-l font-montserrat text-justify">
               {activeDescription}
             </p>
           </div>

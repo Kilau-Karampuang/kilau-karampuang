@@ -8,6 +8,7 @@ const NavItem = ({ href, label }) => {
 
 const Navbar = () => {
   const links = [
+    { href: "/", label: "Beranda" },
     { href: "/profile", label: "Profile" },
     { href: "/wisata", label: "Wisata" }
   ];
