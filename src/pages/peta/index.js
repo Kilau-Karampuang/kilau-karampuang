@@ -1,6 +1,5 @@
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
 const InteractiveMap = dynamic(
@@ -42,7 +41,15 @@ export default function Peta() {
     <div>
       <Navbar />
       <Hero heading="Desa Karampuang" subheading="Eksplorasi Bersama" />
-      <div className="p-24">
+      <div className="flex flex-col justify-center items-center mb-4">
+        <h1 className="text-2xl font-montserrat">
+          Peta <span className="font-bold">Wisata</span>
+        </h1>
+        <p className="hidden sm:block sm:text-lg font-montserrat mb-2 text-center">
+          Jelajahi wisata Karampuang!
+        </p>
+      </div>
+      <div className="p-24 pt-4">
         <InteractiveMap markerCoordinates={markerCoordinates} />
       </div>
     </div>
