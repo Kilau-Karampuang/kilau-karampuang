@@ -7,7 +7,7 @@ export default function Sponsor() {
         <h1 className="text-2xl font-montserrat">
           <span className="font-bold">Mitra</span> Kegiatan
         </h1>
-        <p className="text-lg font-montserrat mb-4 text-center">
+        <p className="hidden sm:block sm:text-lg font-montserrat mb-4 text-center">
           Kegiatan KKN PPM UGM 2024 Kilau Karampuang didukung oleh
         </p>
         <div className="flex flex-col items-center mb-12 gap-4">
