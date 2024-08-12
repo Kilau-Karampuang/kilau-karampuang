@@ -39,14 +39,14 @@ const Map = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center p-4">
-        <h1 className="text-2xl font-montserrat">
+        <h1 className="text-2xl font-montserrat text-center">
           Jelajahi <span className="font-bold">Karampuang</span>
         </h1>
-        <p className="mb-8 text-lg font-montserrat">
+        <p className="mb-8 text-lg font-montserrat text-center">
           Kenali pulau ini agar lebih mudah menelusuri
         </p>
-        <div className="flex flex-row justify-center items-center w-full">
-          <div className="w-max">
+        <div className="flex flex-col sm:flex-row justify-center items-center w-full gap-4">
+          <div className="w-fit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               version="1.2"
@@ -131,11 +131,11 @@ const Map = () => {
               </g>
             </svg>
           </div>
-          <div className="w-fit p-4">
+          <div className="w-full max-w-md p-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl px-12 sm:px-4">
             <p className="text-xl font-bold font-montserrat text-center pb-4">
               {activeLocation}
             </p>
-            <p className="text-l font-montserrat text-justify">
+            <p className="font-montserrat text-justify">
               {activeDescription}
             </p>
           </div>
