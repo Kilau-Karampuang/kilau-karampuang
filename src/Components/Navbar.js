@@ -11,7 +11,8 @@ const Navbar = () => {
   const links = [
     { href: "/", label: "Beranda" },
     { href: "/profile", label: "Profile" },
-    { href: "/wisata", label: "Wisata" }
+    { href: "/wisata", label: "Wisata" },
+    { href: "/peta", label: "Peta" },
   ];
 
   return (
@@ -50,11 +51,6 @@ const Navbar = () => {
               <Link href="/tinggi-potensi-genetik">
                 <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                   Kalkulator TPG
-                </span>
-              </Link>
-              <Link href="/peta">
-                <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                  Peta Desa
                 </span>
               </Link>
             </div>
