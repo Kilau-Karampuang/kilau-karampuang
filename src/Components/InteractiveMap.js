@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
-import L, { popup } from "leaflet";
+import L from "leaflet";
 
 const InteractiveMap = ({ markerCoordinates }) => {
   const defaultIcon = L.icon({
@@ -20,45 +20,52 @@ const InteractiveMap = ({ markerCoordinates }) => {
         center: [-2.6337316, 118.8840961]
       });
 
-      L.tileLayer(
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          maxZoom: 19
-        }
-      ).addTo(mapRef.current);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+      }).addTo(mapRef.current);
 
       L.control.zoom({ position: "bottomright" }).addTo(mapRef.current);
 
       if (Array.isArray(markerCoordinates)) {
         markerCoordinates.forEach(({ lat, lng, location, content }) => {
-          const popup = L.popup().setContent(
-            generatePopupContent(location, content)
-          );
+          const popupContent = generatePopupContent(location, content);
           L.marker([lat, lng], { icon: defaultIcon })
             .addTo(mapRef.current)
-            .bindPopup(popup);
+            .bindPopup(popupContent, {
+              maxWidth: "auto",
+              minWidth: 300,
+              // offset: [-20, 0]
+            });
         });
       }
     }
   }, [markerCoordinates]);
 
-  // STYLING POPUP HERE
   const generatePopupContent = (location, content) => {
-    let popupContent = `<div class="popup-header"><h3>${location}</h3></div>`;
+    let popupContent = `
+      <div class="w-max h-max max-w-lg max-h-lg">
+        <div class="popup-header"><h3>${location}</h3></div>
+    `;
 
-    content.forEach((item, i) => {
-      if (item.popupContent && item.link) {
-        popupContent += `<div class="popup-title"><h4>${item.popupTitle}</h4></div>`;
-        popupContent += `<p class="popup-content">${item.popupContent}</p>`;
-        }
+    content.forEach((item) => {
+      popupContent += `
+        <img src="${item.imgLink}" class="popup-image" />
+      `;
     });
 
+    popupContent += `</div>`;
     return popupContent;
   };
 
-  return <div id="map" className="rounded-3xl" style={{ width: "100%", height: "100vh" }}></div>;
+  return (
+    <div
+      id="map"
+      className="rounded-3xl w-full h-full md:h-screen lg:h-screen p-4"
+      style={{ width: "100%", height: "100vh" }}
+    ></div>
+  );
 };
 
 export default InteractiveMap;
