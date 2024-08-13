@@ -34,12 +34,6 @@ body {
 .wisata {
   @apply font-montserrat;
 }
-.wisata h1 {
-  @apply text-lg;
-  @apply md:text-2xl; 
-  @apply font-semibold;
-  @apply my-3
-}
 
 .wisata p {
   @apply mb-4
@@ -56,6 +50,22 @@ body {
 .artikel p:has(img) {
   overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap; /* Prevent images from wrapping to the next line */
+}
+
+.editor div div h1,
+.editor div div h2,
+.editor div div h3,
+.editor div div h4,
+.editor div div h5,
+.wisata h1,
+.wisata h2,
+.wisata h3,
+.wisata h4,
+.wisata h5 {
+  @apply text-lg;
+  @apply md:text-2xl; 
+  @apply font-semibold;
+  @apply my-3
 }
 
 .popup-header {
