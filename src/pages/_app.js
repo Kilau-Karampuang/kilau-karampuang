@@ -1,5 +1,6 @@
 import Footer from "@/Components/Footer";
 import "@/styles/globals.css";
+import '@mdxeditor/editor/style.css'
 import Loading from "@/Components/Loading";
 import { NextUIProvider } from "@nextui-org/react";
 import Head from "next/head";

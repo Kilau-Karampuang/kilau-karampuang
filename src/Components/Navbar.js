@@ -31,6 +31,12 @@ const Navbar = () => {
               >
                 Tarian
               </Link>
+              <Link
+                href="/objek-lokal"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+              >
+                Objek Lokal
+              </Link>
             </div>
           </div>
           <div className="relative group text-black">
