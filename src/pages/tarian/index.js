@@ -1,10 +1,11 @@
-import Navbar from "@/Components/Navbar";
-import Hero from "@/Components/Hero";
 import { Card, CardFooter, Button } from "@nextui-org/react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useContext } from "react";
 import { LoadingContext } from "@/Context/LoadingContext";
+import { toast } from "react-toastify";
+import Navbar from "@/Components/Navbar";
+import Hero from "@/Components/Hero";
+import axios from "axios";
 
 export default function Tarian() {
   const [visible, setVisible] = useState(false);
@@ -17,12 +18,16 @@ export default function Tarian() {
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/tarian")
       .then((res) => {
-        console.log(res.data);
+        toast.success("Data tarian berhasil dimuat!"), {
+          zIndex: 9999,
+        };
         setCardData(res.data.data);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.error("Failed to fetch tarian", err);
+        toast.error("Data tarian gagal dimuat!"), {
+          zIndex: 9999,
+        };
         setIsLoading(false);
       });
   }, []);
