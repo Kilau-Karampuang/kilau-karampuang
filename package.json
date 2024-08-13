@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdxeditor/editor": "^3.11.0",
     "@nextui-org/react": "^2.4.2",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.12",
@@ -19,6 +20,7 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "react-modal": "^3.16.1",
+    "react-toastify": "^10.0.5",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1"

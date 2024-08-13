@@ -6,6 +6,8 @@ import { NextUIProvider } from "@nextui-org/react";
 import Head from "next/head";
 import { LoadingContext, LoadingProvider } from "@/Context/LoadingContext";
 import { useContext } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function LoadingWrapper({ children }) {
   const { isLoading } = useContext(LoadingContext);
@@ -27,6 +29,18 @@ export default function App({ Component, pageProps }) {
       <NextUIProvider className="max-w-screen overflow-hidden">
         <LoadingProvider>
           <LoadingWrapper>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
             <Component {...pageProps} />
             <Footer />
           </LoadingWrapper>
