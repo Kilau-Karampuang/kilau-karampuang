@@ -3,6 +3,8 @@ title: 'Goa Lidah di Karampuang, Mamuju: Mengungkap Keindahan dan Misteri Alam'
 subheading: 'Mengungkap Keindahan dan Misteri Alam'
 heading: 'Goa Lidah di Karampuang'
 cover: 'Goa Lidah.jpg'
+card: 'GoaLidah.png'
+cardTitle: 'Goa Lidah'
 ---
 
 Goa Lidah, sebuah destinasi alam yang menakjubkan di Karampuang, Mamuju, menawarkan pengunjung pengalaman eksplorasi yang unik dalam sebuah gua alam yang spektakuler.

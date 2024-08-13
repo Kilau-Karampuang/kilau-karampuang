@@ -3,6 +3,8 @@ title: 'Diving and Snorkeling di Pulau Karampuang'
 subheading: 'Menikmati Keindahan Alam Karampuang dengan'
 heading: 'Diving dan Snorkeling'
 cover: 'Divingcover.png'
+card: 'Diving.png'
+cardTitle: 'Diving and Snorkeling'
 ---
 
 # Lokasi Favorit di Dermaga Ujung Bulo

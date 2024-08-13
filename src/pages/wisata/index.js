@@ -3,6 +3,13 @@ import Hero from "@/Components/Hero";
 import Navbar from "@/Components/Navbar";
 import YouTubeEmbed from "@/Components/YoutubeEmbed";
 import { Card, CardFooter, Image, Button, CardHeader } from "@nextui-org/react";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import {remark} from 'remark';
+import html from 'remark-html';
+import gfm from 'remark-gfm';
+import Link from "next/link";
 
 const cardData = [
   {
@@ -25,7 +32,7 @@ const cardData = [
   },
 ];
 
-export default function Wisata(){
+export default function Wisata({tourism}){
     return (
         <>
             <Navbar />
@@ -57,7 +64,7 @@ export default function Wisata(){
                 subheading="Jelajahi berbagai tempat dan aktivitas tak terlupakan"
             />   
             <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
-                {cardData.map((card, index) => (
+                {tourism.map((card, index) => (
                     <Card
                         key={index}
                         isFooterBlurred
@@ -65,25 +72,28 @@ export default function Wisata(){
                     >
                         <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
                         <p className="text-white text-center text-2xl font-bold font-montserrat">
-                            {card.heading}
+                            {card.cardTitle}
                         </p>
                         </CardHeader>
                         <Image
                         removeWrapper
-                        alt={card.altText}
+                        alt={card.title}
                         className="z-0 w-full h-full object-cover"
-                        src={card.imageSrc}
+                        src={card.card}
                         />
                         <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
                         <div className="flex flex-grow gap-2 items-center">
                             <div className="flex flex-col">
-                            <p className="text-tiny text-white/60">{card.title}</p>
+                            <p className="text-tiny text-white/60">wisata</p>
                             <p className="text-tiny text-white/60">{card.subtitle}</p>
                             </div>
                         </div>
-                        <Button radius="full" size="sm">
-                            Lihat Lebih Lanjut
-                        </Button>
+                        <Link href={`wisata/${card.slug}`}>
+                            <Button radius="full" size="sm">
+                                Lihat Lebih Lanjut
+                            </Button>
+                        </Link>
+                        
                         </CardFooter>
                     </Card>
                 ))}
@@ -91,3 +101,21 @@ export default function Wisata(){
         </>
     )
 }
+
+export async function getStaticProps() {
+    const postsDirectory = path.join(process.cwd(), 'content/wisata');
+    const filenames = fs.readdirSync(postsDirectory);
+    const tourism = filenames.map((filename) => {
+        const slug = filename.replace(/\.md$/, '');
+        const postFilePath = path.join(process.cwd(), 'content/wisata', `${slug}.md`);
+        const fileContent = fs.readFileSync(postFilePath, 'utf8');
+        const { content, data } = matter(fileContent);
+        return {...data, slug}
+    });
+  
+    return {
+      props: {
+        tourism
+      },
+    };
+  }
