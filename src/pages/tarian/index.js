@@ -12,22 +12,24 @@ export default function Tarian() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardData, setCardData] = useState([]);
   const { isLoading, setIsLoading } = useContext(LoadingContext);
-  
+
   useEffect(() => {
     setIsLoading(true);
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/tarian")
       .then((res) => {
-        toast.success("Data tarian berhasil dimuat!"), {
-          zIndex: 9999,
-        };
+        toast.success("Data tarian berhasil dimuat!"),
+          {
+            zIndex: 9999
+          };
         setCardData(res.data.data);
         setIsLoading(false);
       })
       .catch((err) => {
-        toast.error("Data tarian gagal dimuat!"), {
-          zIndex: 9999,
-        };
+        toast.error("Data tarian gagal dimuat!"),
+          {
+            zIndex: 9999
+          };
         setIsLoading(false);
       });
   }, []);
@@ -82,8 +84,8 @@ export default function Tarian() {
       </div>
 
       {visible && selectedCard && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded-md shadow-lg max-w-[60%] w-full relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-white p-4 rounded-md shadow-lg max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-3xl w-full relative">
             <button
               className="absolute top-2 right-2 text-gray-600"
               onClick={closeModal}
@@ -95,14 +97,14 @@ export default function Tarian() {
                 {selectedCard.title}
               </h2>
             </div>
-            <iframe
-              width="560"
-              height="315"
-              src={getYoutubeEmbedUrl(selectedCard.videoId)}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full"
-            ></iframe>
+            <div className="aspect-w-16 aspect-h-9 w-full">
+              <iframe
+                src={getYoutubeEmbedUrl(selectedCard.videoId)}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
           </div>
         </div>
       )}
