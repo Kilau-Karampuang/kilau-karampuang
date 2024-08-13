@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import YouTubeEmbed from "@/Components/YoutubeEmbed";
 import Heading from "@/Components/Heading";
-import Navbar from "@/Components/Navbar";
 import Sponsor from "@/Components/Sponsor";
 import Hero from "@/Components/Hero";
 import Image from "next/image";
@@ -12,7 +11,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero heading="Pulau Karampuang" subheading="Menyapa Indahnya" />
       <div className="relative w-[180vw] md:w-[140vw] -ml-[20vw] h-56 bg-white">
         <Image

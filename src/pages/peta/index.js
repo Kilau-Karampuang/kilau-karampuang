@@ -1,4 +1,3 @@
-import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
 import dynamic from "next/dynamic";
 
@@ -92,7 +91,6 @@ export default function Peta() {
 
   return (
     <div>
-      <Navbar />
       <Hero heading="Desa Karampuang" subheading="Eksplorasi Bersama" />
       <div className="flex flex-col justify-center items-center mb-4">
         <h1 className="text-2xl font-montserrat">

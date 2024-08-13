@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { LoadingContext } from "@/Context/LoadingContext";
 import { toast } from "react-toastify";
-import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
 import axios from "axios";
 
@@ -54,7 +53,6 @@ export default function Tarian() {
 
   return (
     <>
-      <Navbar />
       <Hero heading="Tarian Karampuang" subheading="Eksplorasi Bersama" />
 
       <div className="max-w-screen px-8 flex flex-col gap-8 pb-8">

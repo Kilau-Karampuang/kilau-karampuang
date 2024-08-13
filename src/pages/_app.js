@@ -4,9 +4,10 @@ import { NextUIProvider } from "@nextui-org/react";
 import { useContext } from "react";
 import Loading from "@/Components/Loading";
 import Footer from "@/Components/Footer";
+import Navbar from "@/Components/Navbar";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
-import '@mdxeditor/editor/style.css'
+import "@mdxeditor/editor/style.css";
 import "@/styles/globals.css";
 
 function LoadingWrapper({ children }) {
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
               pauseOnHover
               theme="colored"
             />
+            <Navbar />
             <Component {...pageProps} />
             <Footer />
           </LoadingWrapper>

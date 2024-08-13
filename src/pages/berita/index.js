@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { LoadingContext } from "@/Context/LoadingContext";
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
 import axios from "axios";
 
@@ -69,7 +68,6 @@ export default function Berita() {
 
   return (
     <>
-      <Navbar />
       <Hero heading="Berita Karampuang" subheading="Terus Pantau" />
       <div className="container mx-auto py-8 px-12">
         {data.length === 0 ? (

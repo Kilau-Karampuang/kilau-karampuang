@@ -1,6 +1,5 @@
 import Heading from "@/Components/Heading";
 import Hero from "@/Components/Hero";
-import Navbar from "@/Components/Navbar";
 import YouTubeEmbed from "@/Components/YoutubeEmbed";
 import { Card, CardFooter, Image, Button, CardHeader } from "@nextui-org/react";
 
@@ -28,7 +27,6 @@ const cardData = [
 export default function Wisata(){
     return (
         <>
-            <Navbar />
             <Hero
                 heading="Wisata Karampuang"
                 subheading="Jelajahi Pesona"
