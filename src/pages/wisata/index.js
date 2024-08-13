@@ -10,29 +10,15 @@ import {remark} from 'remark';
 import html from 'remark-html';
 import gfm from 'remark-gfm';
 import Link from "next/link";
-
-const cardData = [
-  {
-    imageSrc: "/Diving.png",
-    altText: "Woman listening to music",
-    heading: "Diving and Snorkeling",
-    title: "Aktivitas"
-  },
-  {
-    imageSrc: "/GoaLidah.png",
-    altText: "Woman listening to music",
-    heading: "Goa Lidah",
-    title: "Wisata"
-  },
-  {
-    imageSrc: "/SumurKapal.png",
-    altText: "Woman listening to music",
-    heading: "Sumur Kapal",
-    title: "Wisata"
-  },
-];
+import { title } from "process";
 
 export default function Wisata({tourism}){
+    const cardData = [...tourism.map(t => ({...t, slug: `wisata/${t.slug}`})), {
+        cardTitle: 'Situs Alam',
+        title: 'Situs Wisata Alam',
+        card: '/GoaLidah.png',
+        slug: 'objek-lokal'
+    }]
     return (
         <>
             <Navbar />
@@ -64,7 +50,7 @@ export default function Wisata({tourism}){
                 subheading="Jelajahi berbagai tempat dan aktivitas tak terlupakan"
             />   
             <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
-                {tourism.map((card, index) => (
+                {cardData.map((card, index) => (
                     <Card
                         key={index}
                         isFooterBlurred
@@ -88,7 +74,7 @@ export default function Wisata({tourism}){
                             <p className="text-tiny text-white/60">{card.subtitle}</p>
                             </div>
                         </div>
-                        <Link href={`wisata/${card.slug}`}>
+                        <Link href={card.slug}>
                             <Button radius="full" size="sm">
                                 Lihat Lebih Lanjut
                             </Button>
