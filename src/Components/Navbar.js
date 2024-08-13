@@ -1,6 +1,6 @@
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 const NavItem = ({ href, label }) => {
   return <Link href={href}>{label}</Link>;
@@ -12,7 +12,7 @@ const Navbar = () => {
     { href: "/", label: "Beranda" },
     { href: "/profile", label: "Profile" },
     { href: "/wisata", label: "Wisata" },
-    { href: "/peta", label: "Peta" },
+    { href: "/peta", label: "Peta" }
   ];
 
   return (

@@ -35,7 +35,7 @@ const InteractiveMap = ({ markerCoordinates }) => {
             .addTo(mapRef.current)
             .bindPopup(popupContent, {
               maxWidth: "auto",
-              minWidth: 300,
+              minWidth: 300
               // offset: [-20, 0]
             });
         });
