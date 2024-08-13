@@ -2,12 +2,18 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const NavItem = ({ href, label }) => {
-  return <Link href={href}>{label}</Link>;
-};
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(null);
+
+  const NavItem = ({ href, label }) => {
+    return <Link className={isOpen ? "py-2" : "py-0"} href={href}>{label}</Link>;
+  };
+  
+  const toggleSubMenu = (menu) => {
+    setOpenSubMenu(openSubMenu === menu ? null : menu);
+  };
+
   const links = [
     { href: "/", label: "Beranda" },
     { href: "/profile", label: "Profile" },
@@ -90,40 +96,59 @@ const Navbar = () => {
             {links.map((link, index) => (
               <NavItem key={index} href={link.href} label={link.label} />
             ))}
-          </div>
-          <div className="relative group text-black">
-            <button className="w-full text-left py-2">Budaya</button>
-            <div className="bg-white rounded-md shadow-lg">
-              <Link href="/tarian">
-                <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                  Tarian
-                </span>
-              </Link>
+            <div className="relative">
+              <button
+                onClick={() => toggleSubMenu("budaya")}
+                className="w-full text-left py-2"
+              >
+                Budaya
+              </button>
+              {openSubMenu === "budaya" && (
+                <div className="bg-white rounded-md shadow-lg">
+                  <Link href="/tarian">
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Tarian
+                    </span>
+                  </Link>
+                  <Link href="/objek-lokal">
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Objek Lokal
+                    </span>
+                  </Link>
+                </div>
+              )}
             </div>
-          </div>
-          <div className="relative group text-black">
-            <button className="w-full text-left py-2">Layanan Desa</button>
-            <div className="bg-white rounded-md shadow-lg">
-              <Link href="/berita">
-                <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                  Berita Desa
-                </span>
-              </Link>
-              <Link href="/stunting-calculator">
-                <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                  Kalkulator Stunting
-                </span>
-              </Link>
-              <Link href="/tinggi-potensi-genetik">
-                <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                  Kalkulator TPG
-                </span>
-              </Link>
-              <Link href="/peta">
-                <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                  Peta Desa
-                </span>
-              </Link>
+            <div className="relative">
+              <button
+                onClick={() => toggleSubMenu("layanan")}
+                className="w-full text-left py-2"
+              >
+                Layanan Desa
+              </button>
+              {openSubMenu === "layanan" && (
+                <div className="bg-white rounded-md shadow-lg">
+                  <Link href="/berita">
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Berita Desa
+                    </span>
+                  </Link>
+                  <Link href="/stunting-calculator">
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Kalkulator Stunting
+                    </span>
+                  </Link>
+                  <Link href="/tinggi-potensi-genetik">
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Kalkulator TPG
+                    </span>
+                  </Link>
+                  <Link href="/peta">
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Peta Desa
+                    </span>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
