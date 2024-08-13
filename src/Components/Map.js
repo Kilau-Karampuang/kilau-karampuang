@@ -39,10 +39,10 @@ const Map = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center p-4">
-        <h1 className="text-2xl font-montserrat text-center">
+        <h1 className="mb-4 sm:mb-0 text-2xl font-montserrat text-center">
           Jelajahi <span className="font-bold">Karampuang</span>
         </h1>
-        <p className="mb-8 text-lg font-montserrat text-center">
+        <p className="hidden sm:block mb-8 text-lg font-montserrat text-center">
           Kenali pulau ini agar lebih mudah menelusuri
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center w-full gap-4">
