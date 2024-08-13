@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
-import { useState, useEffect } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement('#__next');
