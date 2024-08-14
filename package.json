@@ -23,7 +23,8 @@
     "react-toastify": "^10.0.5",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "swiper": "^11.1.9"
   },
   "devDependencies": {
     "eslint": "^8",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export default function AdminBerita() {
   const router = useRouter();
@@ -11,19 +12,26 @@ export default function AdminBerita() {
 
   const handleSubmit = () => {
     if (password == process.env.NEXT_PUBLIC_PASSWORD) {
-      alert("Password benar");
+      toast.success("Login berhasil!", {
+        zIndex: 9999
+      });
       localStorage.setItem("isAdmin", true);
       router.push("/admin/berita");
     } else {
-      alert("Password salah");
-    };
+      toast.error("Password salah!", {
+        zIndex: 9999
+      });
+    }
   };
 
   return (
     <>
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
         <div className="p-6 bg-white rounded-large shadow-md w-full max-w-sm">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700"
+          >
             Password
           </label>
           <input

@@ -1,9 +1,10 @@
+import { useState, useEffect, useContext } from "react";
+import { LoadingContext } from "@/Context/LoadingContext";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import Hero from "@/Components/Hero";
-import { useState, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
-import { LoadingContext } from "@/Context/LoadingContext";
 
 const Tarian = ({
   title,
@@ -90,12 +91,16 @@ export default function AdminTarian() {
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/tarian")
       .then((res) => {
-        console.log(res.data);
+        toast.success("Berhasil memuat tarian", {
+          zIndex: 9999,
+        });
         setTarians(res.data.data);
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.error("Failed to fetch tarians", err);
+      .catch(() => {
+        toast.error("Gagal memuat tarian", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };
@@ -125,15 +130,19 @@ export default function AdminTarian() {
         videoId: newVideoId,
         secretKey: process.env.NEXT_PUBLIC_SECRET_KEY,
       })
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        toast.success("Berhasil menambahkan tarian", {
+          zIndex: 9999,
+        });
         setNewJudul("");
         setNewVideoId("");
         setIsLoading(false);
         fetchTarians();
       })
-      .catch((err) => {
-        console.error("Failed to add tarian", err);
+      .catch(() => {
+        toast.error("Gagal menambahkan tarian", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };
@@ -161,16 +170,20 @@ export default function AdminTarian() {
           secretKey: process.env.NEXT_PUBLIC_SECRET_KEY,
         }
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        toast.success("Berhasil mengupdate tarian", {
+          zIndex: 9999,
+        });
         setTarians(updatedTarians);
         setEditingIndex(null);
         setEditJudul("");
         setEditVideoId("");
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.error("Failed to update tarian", err);
+      .catch(() => {
+        toast.error("Gagal mengupdate tarian", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };
@@ -187,13 +200,17 @@ export default function AdminTarian() {
       .delete(process.env.NEXT_PUBLIC_API_URL + "/api/tarian/" + id, {
         data: { secretKey: process.env.NEXT_PUBLIC_SECRET_KEY },
       })
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        toast.success("Berhasil menghapus tarian", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
         fetchTarians();
       })
-      .catch((err) => {
-        console.error("Failed to delete tarian", err);
+      .catch(() => {
+        toast.error("Gagal menghapus tarian", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };

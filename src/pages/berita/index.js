@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "@/Components/Navbar";
+import { LoadingContext } from "@/Context/LoadingContext";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 import Hero from "@/Components/Hero";
 import axios from "axios";
-import { useContext } from "react";
-import { LoadingContext } from "@/Context/LoadingContext";
 
-// TODO: LOADING AND TOAST TO NOTIFY
 export default function Berita() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,12 +16,17 @@ export default function Berita() {
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
       .then((res) => {
+        toast.success("Data berita berhasil dimuat!", {
+          zIndex: 9999,
+        });
         const sortedData = res.data.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setData(sortedData);
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        toast.error("Data berita gagal dimuat!", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   }, []);
@@ -64,7 +68,6 @@ export default function Berita() {
 
   return (
     <>
-      <Navbar />
       <Hero heading="Berita Karampuang" subheading="Terus Pantau" />
       <div className="container mx-auto py-8 px-12">
         {data.length === 0 ? (

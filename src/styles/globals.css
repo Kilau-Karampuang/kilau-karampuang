@@ -96,3 +96,43 @@ body {
   color: white; /* Text color */
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white !important;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+@keyframes marquee-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-60%); }
+}
+
+@keyframes marquee-fast {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-60%); }
+}
+
+.animate-marquee-slow {
+  animation: marquee-slow 40s linear infinite; 
+  will-change: transform;
+}
+
+.animate-marquee-fast {
+  animation: marquee-fast 30s linear infinite; 
+  will-change: transform;
+}

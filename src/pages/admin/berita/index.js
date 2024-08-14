@@ -1,10 +1,11 @@
-import NavbarAdmin from "@/Components/NavbarAdmin";
-import Hero from "@/Components/Hero";
+import { LoadingContext } from "@/Context/LoadingContext";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { useContext } from "react";
-import { LoadingContext } from "@/Context/LoadingContext";
+import { toast } from "react-toastify";
+import NavbarAdmin from "@/Components/NavbarAdmin";
+import Hero from "@/Components/Hero";
+import axios from "axios";
 
 const Article = ({
   title,
@@ -94,22 +95,28 @@ export default function AdminBerita() {
     axios
       .get(process.env.NEXT_PUBLIC_API_URL + "/api/berita")
       .then((res) => {
-        console.log(res.data);
+        toast.success("Data berita berhasil dimuat!", {
+          zIndex: 9999,
+        });
         const sortedData = res.data.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         setArticles(sortedData);
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.error("Failed to fetch articles", err);
+      .catch(() => {
+        toast.error("Data berita gagal dimuat!", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };
 
   useEffect(() => {
     if (localStorage.getItem("isAdmin") !== "true") {
-      alert("Anda harus login sebagai admin terlebih dahulu");
+      toast.error("Anda harus login terlebih dahulu!", {
+        zIndex: 9999,
+      });
       router.push("/admin");
     }
 
@@ -132,15 +139,19 @@ export default function AdminBerita() {
         deskripsi: newDeskripsi,
         secretKey: process.env.NEXT_PUBLIC_SECRET_KEY,
       })
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        toast.success("Berita berhasil ditambahkan!", {
+          zIndex: 9999,
+        });
         setNewJudul("");
         setNewDeskripsi("");
         setIsLoading(false);
         fetchArticles();
       })
-      .catch((err) => {
-        console.error("Failed to add article", err);
+      .catch(() => {
+        toast.error("Gagal menambahkan berita!", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };
@@ -168,16 +179,20 @@ export default function AdminBerita() {
           secretKey: process.env.NEXT_PUBLIC_SECRET_KEY,
         }
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        toast.success("Berita berhasil diupdate!", {
+          zIndex: 9999,
+        });
         setArticles(updatedArticles);
         setEditingIndex(null);
         setEditJudul("");
         setEditDeskripsi("");
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.error("Failed to update article", err);
+      .catch(() => {
+        toast.error("Gagal mengupdate berita!", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };
@@ -194,13 +209,17 @@ export default function AdminBerita() {
       .delete(process.env.NEXT_PUBLIC_API_URL + "/api/berita/" + id, {
         data: { secretKey: process.env.NEXT_PUBLIC_SECRET_KEY },
       })
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        toast.success("Berita berhasil dihapus!", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
         fetchArticles();
       })
-      .catch((err) => {
-        console.error("Failed to delete article", err);
+      .catch(() => {
+        toast.error("Gagal menghapus berita!", {
+          zIndex: 9999,
+        });
         setIsLoading(false);
       });
   };

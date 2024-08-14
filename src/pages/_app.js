@@ -1,13 +1,14 @@
-import Footer from "@/Components/Footer";
-import "@/styles/globals.css";
-import '@mdxeditor/editor/style.css'
-import Loading from "@/Components/Loading";
-import { NextUIProvider } from "@nextui-org/react";
-import Head from "next/head";
 import { LoadingContext, LoadingProvider } from "@/Context/LoadingContext";
-import { useContext } from "react";
 import { ToastContainer } from "react-toastify";
+import { NextUIProvider } from "@nextui-org/react";
+import { useContext } from "react";
+import Loading from "@/Components/Loading";
+import Footer from "@/Components/Footer";
+import Navbar from "@/Components/Navbar";
+import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
+import "@mdxeditor/editor/style.css";
+import "@/styles/globals.css";
 
 function LoadingWrapper({ children }) {
   const { isLoading } = useContext(LoadingContext);
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
               pauseOnHover
               theme="colored"
             />
+            <Navbar />
             <Component {...pageProps} />
             <Footer />
           </LoadingWrapper>

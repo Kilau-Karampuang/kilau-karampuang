@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
 import Modal from "react-modal";
 
@@ -54,7 +53,6 @@ export default function TinggiPotensiGenetik() {
   return (
     <>
       <div>
-        <Navbar />
         <Hero heading="Tinggi Potensi Genetik" subheading="Kalkulator" />
         <div className="max-w-2xl mx-auto p-4">
           <form
