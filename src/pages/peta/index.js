@@ -13,7 +13,8 @@ export default function Peta() {
       location: "Goa Lidah",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=1Ka4Rue_nTIf9SXaQmD0k_HrHah9IfS4H"
+          imgLink: "https://drive.google.com/thumbnail?id=1Ka4Rue_nTIf9SXaQmD0k_HrHah9IfS4H",
+          mapsLink: "https://maps.app.goo.gl/GHJhtEF5mMgAxAJ78"
         }
       ]
     },
@@ -23,7 +24,8 @@ export default function Peta() {
       location: "Goa Mimpi",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=1K5q2xm-AY3zjzkyzyloWsSTmsLHSZucS"
+          imgLink: "https://drive.google.com/thumbnail?id=1K5q2xm-AY3zjzkyzyloWsSTmsLHSZucS",
+          mapsLink: "https://maps.app.goo.gl/QqHhdVBeGnMpyodn7"
         }
       ]
     },
@@ -33,7 +35,8 @@ export default function Peta() {
       location: "Sumur Kapal",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=1SerYJCIeMLDvO5tWLkwrrJgJ5hJ_Ni8j"
+          imgLink: "https://drive.google.com/thumbnail?id=1SerYJCIeMLDvO5tWLkwrrJgJ5hJ_Ni8j",
+          mapsLink: "https://maps.app.goo.gl/ZmfdSApGfyrpHNMF9"
         }
       ]
     },
@@ -43,7 +46,8 @@ export default function Peta() {
       location: "Sumur Jodoh",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=13FyXqmTdchleEU0BJCdaIStbE4ZmjYie"
+          imgLink: "https://drive.google.com/thumbnail?id=13FyXqmTdchleEU0BJCdaIStbE4ZmjYie",
+          mapsLink: "https://maps.app.goo.gl/EhVQJkrdGujqVuz79"
         }
       ]
     },
@@ -53,7 +57,8 @@ export default function Peta() {
       location: "Kuburan Islam Kuno",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=1fRE0gluTCowbaJzscreqlRjXQVqaJ4kr"
+          imgLink: "https://drive.google.com/thumbnail?id=1fRE0gluTCowbaJzscreqlRjXQVqaJ4kr",
+          mapsLink: "https://maps.app.goo.gl/yQY2CDh5BHjdciLs7"
         }
       ]
     },
@@ -63,7 +68,8 @@ export default function Peta() {
       location: "Bujung Jampurung",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=1Mxz5bpUGcOFNu3W9EznbebJeocWyU64A"
+          imgLink: "https://drive.google.com/thumbnail?id=1Mxz5bpUGcOFNu3W9EznbebJeocWyU64A",
+          mapsLink: "https://maps.app.goo.gl/EyrmnxgQuK5MiW6WA"
         }
       ]
     },
@@ -73,7 +79,8 @@ export default function Peta() {
       location: "Dermaga Ujung Bulo Wisata",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=1vYth9hKWHOaQ65AnnZyGCR-pxGRGQbue"
+          imgLink: "https://drive.google.com/thumbnail?id=1vYth9hKWHOaQ65AnnZyGCR-pxGRGQbue",
+          mapsLink: "https://maps.app.goo.gl/bfpKAgLGBaHWkh3L8"
         }
       ]
     },
@@ -83,7 +90,8 @@ export default function Peta() {
       location: "Batu Pute",
       content: [
         {
-          imgLink: "https://drive.google.com/thumbnail?id=14IyqkTklybGGO5fGhKwjR00b1eMWpQ0m"
+          imgLink: "https://drive.google.com/thumbnail?id=14IyqkTklybGGO5fGhKwjR00b1eMWpQ0m",
+          mapsLink: "https://maps.app.goo.gl/XQ96jW3rD3dEJWG48"
         }
       ]
     }

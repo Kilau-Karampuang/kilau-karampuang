@@ -5,8 +5,8 @@ import L from "leaflet";
 const InteractiveMap = ({ markerCoordinates }) => {
   const defaultIcon = L.icon({
     iconUrl:
-      "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png",
-    iconSize: [30, 30]
+      "./map-marker.png",
+    iconSize: [20, 30]
   });
 
   const mapRef = useRef(null);
@@ -36,7 +36,6 @@ const InteractiveMap = ({ markerCoordinates }) => {
             .bindPopup(popupContent, {
               maxWidth: "auto",
               minWidth: 300
-              // offset: [-20, 0]
             });
         });
       }
@@ -46,12 +45,16 @@ const InteractiveMap = ({ markerCoordinates }) => {
   const generatePopupContent = (location, content) => {
     let popupContent = `
       <div class="w-max h-max max-w-lg max-h-lg">
-        <div class="popup-header"><h3>${location}</h3></div>
+        <div class="popup-header"><h3>${location}</h3>
+      </div>
     `;
 
     content.forEach((item) => {
       popupContent += `
         <img src="${item.imgLink}" class="popup-image" />
+        <div class="button-container">
+          <a href="${item.mapsLink}" target="_blank" class="popup-button">Google Maps</a>
+        </div>
       `;
     });
 
