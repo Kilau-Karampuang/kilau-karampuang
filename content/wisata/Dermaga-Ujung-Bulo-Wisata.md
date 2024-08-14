@@ -2,8 +2,8 @@
 title: 'Dermaga Wisata Ujung Bulo'
 subheading: 'Gerbang Keindahan Karampuang'
 heading: 'Dermaga Ujung Bulo Wisata'
-cover: 'Divingcover.png'
-card: 'Diving.png'
+cover: 'wisata/dermaga-wisata.jpg'
+card: 'wisata/dermaga-wisata.jpg'
 cardTitle: 'Dermaga Wisata Ujung Bulo'
 ---
 

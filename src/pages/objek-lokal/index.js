@@ -107,6 +107,16 @@ const cardData = [
     lokasi: "Karampuang",
     jenis: "tradisi"
   },
+  {
+    imageSrc: "/budaya/Jepa.jpg",
+    article: `Di Karampuang, pemenuhan karbohidrat tidak hanya bergantung pada nasi. Masyarakat lokal juga sering mengonsumsi Jepa, makanan khas yang menjadi bagian penting dari budaya kuliner setempat. Jepa dibuat dari singkong sebagai bahan dasarnya, yang menjadi alternatif sumber karbohidrat selain nasi.
+        Proses pembuatan Jepa dimulai dengan mengupas singkong, lalu diparut hingga halus. Parutan singkong ini kemudian diperas untuk mengeluarkan saripatinya, dan ampas yang tersisa diayak hingga halus. Setelah itu, ampas singkong dibentuk menjadi bundar pipih dan dimasak. Jepa biasanya disajikan bersama lauk-lauk khas lokal, seperti teri, cumi, dan berbagai jenis hidangan laut lainnya. Jepa bukan hanya makanan, tetapi juga representasi dari kearifan lokal dalam memanfaatkan hasil bumi untuk menciptakan hidangan yang lezat dan bergizi.
+    `,
+    heading: "Jepa",
+    title: "Jepa: Alternatif Karbohidrat Khas Karampuang",
+    lokasi: "Karampuang",
+    jenis: "makanan"
+  },
 ];
 
 export default function ObjekLokal(){
@@ -141,15 +151,15 @@ export default function ObjekLokal(){
                 heading={<>Situs <b>Alam</b></>}
                 subheading="Menyelami Legenda berbagai Situs Karampuang"
             />   
-            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
+            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 flex flex-wrap px-8">
                 {getSitus().map((card, index) => (
                     <Card
                         key={index}
                         isFooterBlurred
-                        className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
+                        className="min-w-60 mx-auto max-w-screen sm:max-w-64 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
                     >
                         <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
-                        <p className="text-white text-center text-2xl font-bold font-montserrat">
+                        <p className="text-white outlined text-center text-2xl font-bold font-montserrat">
                             {card.heading}
                         </p>
                         </CardHeader>
@@ -178,7 +188,7 @@ export default function ObjekLokal(){
                 heading={<>Makanan <b>Lokal</b></>}
                 subheading="Nikmati berbagai makanan lokal khas Karampuang"
             />   
-            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8 justify-items-center">
+            <div className="max-w-2xl mt-12 mb-40 mx-auto gap-y-8 sm:gap-x-8 grid grid-cols-6 px-8">
                 {getKuliner().map((card, index) => (
                     <Card
                         key={index}
@@ -186,7 +196,7 @@ export default function ObjekLokal(){
                         className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
                     >
                         <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
-                        <p className="text-white text-center text-2xl font-bold font-montserrat">
+                        <p className="text-white outlined text-center text-2xl font-bold font-montserrat">
                             {card.heading}
                         </p>
                         </CardHeader>
@@ -215,15 +225,15 @@ export default function ObjekLokal(){
                 heading={<>Tradisi <b>Lokal</b></>}
                 subheading="Kenali lebih dekat tradisi unik dari Karampuang "
             />   
-            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
+            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 flex flex-wrap px-8">
                 {getTradisi().map((card, index) => (
                     <Card
                         key={index}
                         isFooterBlurred
-                        className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
+                        className="w-full mx-auto max-w-screen sm:max-w-64 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
                     >
                         <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
-                        <p className="text-white text-center text-2xl font-bold font-montserrat">
+                        <p className="text-white outlined text-center text-2xl font-bold font-montserrat">
                             {card.heading}
                         </p>
                         </CardHeader>

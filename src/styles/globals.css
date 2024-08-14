@@ -91,3 +91,8 @@ body {
 .popup-image:hover {
   transform: scale(1.1);
 }
+
+.outlined {
+  color: white; /* Text color */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
