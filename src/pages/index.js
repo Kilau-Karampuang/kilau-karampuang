@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import YouTubeEmbed from "@/Components/YoutubeEmbed";
 import Heading from "@/Components/Heading";
 import Sponsor from "@/Components/Sponsor";
+import Gallery from "@/Components/Gallery";
 import Hero from "@/Components/Hero";
 import Image from "next/image";
 import Map from "@/Components/Map";
@@ -12,7 +13,8 @@ export default function Home() {
   return (
     <>
       <Hero heading="Pulau Karampuang" subheading="Menyapa Indahnya" />
-      <div className="relative w-[180vw] md:w-[140vw] -ml-[20vw] h-56 bg-white">
+      <Gallery />
+      {/* <div className="relative w-[180vw] md:w-[140vw] -ml-[20vw] h-56 bg-white">
         <Image
           className="absolute -top-40 py-24"
           src="/Highlight.png"
@@ -21,7 +23,7 @@ export default function Home() {
           width={2000}
           priority
         />
-      </div>
+      </div> */}
       <Heading
         className="mb-10 md:mt-24 pt-40"
         heading={
