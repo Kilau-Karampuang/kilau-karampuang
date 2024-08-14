@@ -114,20 +114,20 @@ body {
 
 @keyframes marquee-slow {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-60%); }
 }
 
 @keyframes marquee-fast {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-60%); }
 }
 
 .animate-marquee-slow {
-  animation: marquee-slow 40s linear infinite; /* Slower speed */
+  animation: marquee-slow 40s linear infinite; 
   will-change: transform;
 }
 
 .animate-marquee-fast {
-  animation: marquee-fast 30s linear infinite; /* Faster speed */
+  animation: marquee-fast 30s linear infinite; 
   will-change: transform;
 }
