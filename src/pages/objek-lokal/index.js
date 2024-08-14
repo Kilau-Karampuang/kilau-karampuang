@@ -1,8 +1,8 @@
-import Heading from "@/Components/Heading";
-import Hero from "@/Components/Hero";
-import Navbar from "@/Components/Navbar";
 import { Card, CardFooter, Image, Button, CardHeader } from "@nextui-org/react";
 import { useState } from "react";
+import Heading from "@/Components/Heading";
+import Navbar from "@/Components/Navbar";
+import Hero from "@/Components/Hero";
 
 const cardData = [
   {
@@ -106,176 +106,189 @@ const cardData = [
     title: "Tradisi Pisang Setandan: Ritual Pembangunan Rumah di Karampuang",
     lokasi: "Karampuang",
     jenis: "tradisi"
-  },
+  }
 ];
 
-export default function ObjekLokal(){
-    const [visible, setVisible] = useState(false);
-    const [selectedCard, setSelectedCard] = useState(null);
+export default function ObjekLokal() {
+  const [visible, setVisible] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
 
-    const openModal = (card) => {
-        setSelectedCard(card);
-        setVisible(true);
-    };
+  const openModal = (card) => {
+    setSelectedCard(card);
+    setVisible(true);
+  };
 
-    const closeModal = () => {
-        setVisible(false);
-        setSelectedCard(null);
-    };
+  const closeModal = () => {
+    setVisible(false);
+    setSelectedCard(null);
+  };
 
-    const getSitus = () => cardData.filter(c => c.jenis == "situs");
+  const getSitus = () => cardData.filter((c) => c.jenis == "situs");
 
-    const getKuliner = () => cardData.filter(c => c.jenis == "makanan");
+  const getKuliner = () => cardData.filter((c) => c.jenis == "makanan");
 
-    const getTradisi = () => cardData.filter(c => c.jenis == "tradisi");
+  const getTradisi = () => cardData.filter((c) => c.jenis == "tradisi");
 
-    return (
-        <>
-            <Navbar />
-            <Hero
-                subheading="Inventarisasi Bersama"
-                heading="Objek Lokal Karampuang"
-                image="/Vector_S.png" />
-            
-            <Heading
-                heading={<>Situs <b>Alam</b></>}
-                subheading="Menyelami Legenda berbagai Situs Karampuang"
-            />   
-            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
-                {getSitus().map((card, index) => (
-                    <Card
-                        key={index}
-                        isFooterBlurred
-                        className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
-                    >
-                        <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
-                        <p className="text-white text-center text-2xl font-bold font-montserrat">
-                            {card.heading}
-                        </p>
-                        </CardHeader>
-                        <Image
-                        removeWrapper
-                        alt={card.altText}
-                        className="z-0 w-full h-full object-cover"
-                        src={card.imageSrc}
-                        />
-                        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
-                        <div className="flex flex-grow gap-2 items-center">
-                            <div className="flex flex-col">
-                            <p className="text-tiny text-white/60">{card.jenis}</p>
-                            <p className="text-tiny text-white/60">{card.subtitle}</p>
-                            </div>
-                        </div>
-                        <Button radius="full" size="sm" onClick={() => openModal(card)}>
-                            Lihat Lebih Lanjut
-                        </Button>
-                        </CardFooter>
-                    </Card>
-                ))}
-            </div>
+  return (
+    <>
+      <Navbar />
+      <Hero
+        subheading="Inventarisasi Bersama"
+        heading="Objek Lokal Karampuang"
+        image="/Vector_S.png"
+      />
 
-            <Heading
-                heading={<>Makanan <b>Lokal</b></>}
-                subheading="Nikmati berbagai makanan lokal khas Karampuang"
-            />   
-            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8 justify-items-center">
-                {getKuliner().map((card, index) => (
-                    <Card
-                        key={index}
-                        isFooterBlurred
-                        className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
-                    >
-                        <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
-                        <p className="text-white text-center text-2xl font-bold font-montserrat">
-                            {card.heading}
-                        </p>
-                        </CardHeader>
-                        <Image
-                        removeWrapper
-                        alt={card.altText}
-                        className="z-0 w-full h-full object-cover"
-                        src={card.imageSrc}
-                        />
-                        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
-                        <div className="flex flex-grow gap-2 items-center">
-                            <div className="flex flex-col">
-                            <p className="text-tiny text-white/60">{card.jenis}</p>
-                            <p className="text-tiny text-white/60">{card.subtitle}</p>
-                            </div>
-                        </div>
-                        <Button radius="full" size="sm" onClick={() => openModal(card)}>
-                            Lihat Lebih Lanjut
-                        </Button>
-                        </CardFooter>
-                    </Card>
-                ))}
-            </div>
-
-            <Heading
-                heading={<>Tradisi <b>Lokal</b></>}
-                subheading="Kenali lebih dekat tradisi unik dari Karampuang "
-            />   
-            <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
-                {getTradisi().map((card, index) => (
-                    <Card
-                        key={index}
-                        isFooterBlurred
-                        className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
-                    >
-                        <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
-                        <p className="text-white text-center text-2xl font-bold font-montserrat">
-                            {card.heading}
-                        </p>
-                        </CardHeader>
-                        <Image
-                        removeWrapper
-                        alt={card.altText}
-                        className="z-0 w-full h-full object-cover"
-                        src={card.imageSrc}
-                        />
-                        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
-                        <div className="flex flex-grow gap-2 items-center">
-                            <div className="flex flex-col">
-                            <p className="text-tiny text-white/60">{card.jenis}</p>
-                            <p className="text-tiny text-white/60">{card.subtitle}</p>
-                            </div>
-                        </div>
-                        <Button radius="full" size="sm" onClick={() => openModal(card)}>
-                            Lihat Lebih Lanjut
-                        </Button>
-                        </CardFooter>
-                    </Card>
-                ))}
-            </div>
-
-            {visible && selectedCard && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white p-8 h-[95vh] overflow-scroll rounded-md shadow-lg max-w-[60%] w-full relative">
-                        <button
-                            className="absolute top-2 right-2 text-gray-600"
-                            onClick={closeModal}
-                        >
-                        X
-                        </button>
-                        <div className="mt-4">
-                        <h2 className="text-xl font-bold text-center">
-                            {selectedCard.title}
-                        </h2>
-                        <img
-                            alt={selectedCard.heading}
-                            className="z-0 w-full h-96 object-cover mt-6 rounded"
-                            src={selectedCard.imageSrc}
-                        />
-                        </div>
-                        <p>
-                            {selectedCard.article.split("\n").map(ph => <p className="mt-4">{ph}</p>)}
-                        </p>
-                        <p className="mt-4 font-semibold">
-                            Lokasi : {selectedCard.lokasi}
-                        </p>
-                    </div>
+      <Heading
+        heading={
+          <>
+            Situs <b>Alam</b>
+          </>
+        }
+        subheading="Menyelami Legenda berbagai Situs Karampuang"
+      />
+      <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
+        {getSitus().map((card, index) => (
+          <Card
+            key={index}
+            isFooterBlurred
+            className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
+          >
+            <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
+              <p className="text-white text-center text-2xl font-bold font-montserrat">
+                {card.heading}
+              </p>
+            </CardHeader>
+            <Image
+              removeWrapper
+              alt={card.altText}
+              className="z-0 w-full h-full object-cover"
+              src={card.imageSrc}
+            />
+            <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+              <div className="flex flex-grow gap-2 items-center">
+                <div className="flex flex-col">
+                  <p className="text-tiny text-white/60">{card.jenis}</p>
+                  <p className="text-tiny text-white/60">{card.subtitle}</p>
                 </div>
-            )}
-        </>
-    )
+              </div>
+              <Button radius="full" size="sm" onClick={() => openModal(card)}>
+                Lihat Lebih Lanjut
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      <Heading
+        heading={
+          <>
+            Makanan <b>Lokal</b>
+          </>
+        }
+        subheading="Nikmati berbagai makanan lokal khas Karampuang"
+      />
+      <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8 justify-items-center">
+        {getKuliner().map((card, index) => (
+          <Card
+            key={index}
+            isFooterBlurred
+            className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
+          >
+            <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
+              <p className="text-white text-center text-2xl font-bold font-montserrat">
+                {card.heading}
+              </p>
+            </CardHeader>
+            <Image
+              removeWrapper
+              alt={card.altText}
+              className="z-0 w-full h-full object-cover"
+              src={card.imageSrc}
+            />
+            <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+              <div className="flex flex-grow gap-2 items-center">
+                <div className="flex flex-col">
+                  <p className="text-tiny text-white/60">{card.jenis}</p>
+                  <p className="text-tiny text-white/60">{card.subtitle}</p>
+                </div>
+              </div>
+              <Button radius="full" size="sm" onClick={() => openModal(card)}>
+                Lihat Lebih Lanjut
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      <Heading
+        heading={
+          <>
+            Tradisi <b>Lokal</b>
+          </>
+        }
+        subheading="Kenali lebih dekat tradisi unik dari Karampuang "
+      />
+      <div className="max-w-screen mt-12 mb-40 lg:mx-40 gap-y-8 sm:gap-x-8 grid grid-cols-9 px-8">
+        {getTradisi().map((card, index) => (
+          <Card
+            key={index}
+            isFooterBlurred
+            className="w-full mx-auto max-w-80 h-96 sm:h-80 col-span-12 sm:col-span-3 hover:scale-105"
+          >
+            <CardHeader className="absolute z-10 top-1 flex-col items-center pt-8">
+              <p className="text-white text-center text-2xl font-bold font-montserrat">
+                {card.heading}
+              </p>
+            </CardHeader>
+            <Image
+              removeWrapper
+              alt={card.altText}
+              className="z-0 w-full h-full object-cover"
+              src={card.imageSrc}
+            />
+            <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+              <div className="flex flex-grow gap-2 items-center">
+                <div className="flex flex-col">
+                  <p className="text-tiny text-white/60">{card.jenis}</p>
+                  <p className="text-tiny text-white/60">{card.subtitle}</p>
+                </div>
+              </div>
+              <Button radius="full" size="sm" onClick={() => openModal(card)}>
+                Lihat Lebih Lanjut
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      {visible && selectedCard && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-8 h-[95vh] overflow-scroll rounded-md shadow-lg max-w-[60%] w-full relative">
+            <button
+              className="absolute top-2 right-2 text-gray-600"
+              onClick={closeModal}
+            >
+              X
+            </button>
+            <div className="mt-4">
+              <h2 className="text-xl font-bold text-center">
+                {selectedCard.title}
+              </h2>
+              <img
+                alt={selectedCard.heading}
+                className="z-0 w-full h-96 object-cover mt-6 rounded"
+                src={selectedCard.imageSrc}
+              />
+            </div>
+            <p>
+              {selectedCard.article.split("\n").map((ph) => (
+                <p className="mt-4">{ph}</p>
+              ))}
+            </p>
+            <p className="mt-4 font-semibold">Lokasi : {selectedCard.lokasi}</p>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
