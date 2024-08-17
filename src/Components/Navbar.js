@@ -65,6 +65,11 @@ const Navbar = () => {
                   Kalkulator TPG
                 </span>
               </Link>
+              <Link href="/data-desa">
+                <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                  Data Desa
+                </span>
+              </Link>
             </div>
           </div>
         </div>
@@ -142,9 +147,9 @@ const Navbar = () => {
                       Kalkulator TPG
                     </span>
                   </Link>
-                  <Link href="/peta">
+                  <Link href="/data-desa">
                     <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                      Peta Desa
+                      Data Desa
                     </span>
                   </Link>
                 </div>
