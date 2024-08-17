@@ -17,7 +17,7 @@ export default function Profil() {
         }
         subheading="Ikuti perjalanan kami menelusuri surga tersembunyi"
       />
-      <YouTubeEmbed videoId="hRYZ_fCX_pk" />
+      <YouTubeEmbed videoId="iyeE3pIMotc" />
 
       <div className="font-montserrat">
         <h1 className="text-center text-2xl my-4">Tentang Karampuang</h1>
