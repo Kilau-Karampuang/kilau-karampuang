@@ -32,7 +32,7 @@ export default function Wisata({tourism}){
         subheading="Saksikan keindahan alam tersembunyi di Pulau Karampuang"
       />
       <div className="flex justify-center mt-10">
-        <YouTubeEmbed videoId="hRYZ_fCX_pk" />
+        <YouTubeEmbed videoId="iyeE3pIMotc" />
       </div>
 
       <p className="font-montserrat text-lg p-4 max-w-3xl mt-4 mb-20 text-center mx-auto">
