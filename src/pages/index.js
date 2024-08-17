@@ -33,7 +33,7 @@ export default function Home() {
         }
         subheading="Ikuti perjalanan kami menelusuri surga tersembunyi"
       />
-      <YouTubeEmbed videoId="hRYZ_fCX_pk" />
+      <YouTubeEmbed videoId="iyeE3pIMotc" />
 
       <main
         className={`flex min-h-screen flex-col items-center justify-between px-24 ${inter.className}`}
