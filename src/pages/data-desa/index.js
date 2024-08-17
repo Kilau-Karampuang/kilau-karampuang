@@ -7,6 +7,11 @@ export default function DataDesa() {
       name: "Peta Batas Dusun",
       desc: "Informasi lengkap mengenai peta batas dusun di Pulau Karampuang",
       file: "./data/batas-dusun.png"
+    },
+    {
+      name: "Data Penduduk Lengkap",
+      desc: "Data lengkap mengenai jumlah penduduk, struktur usia, pekerjaan, dan kondisi pemukiman di Pulau Karampuang",
+      file: "./data/DataPenduduk.rar"
     }
   ];
 
